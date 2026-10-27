@@ -7,7 +7,7 @@ name = "chess-self"
 version = "0.1.0"
 description = "Personal Maia3 move and clock imitation experiments"
 requires-python = ">=3.12,<3.14"
-dependencies = ["maia3", "requests>=2.32", "python-chess==1.999", "torch>=2.6", "numpy>=2"]
+dependencies = ["maia3", "requests>=2.32", "python-chess==1.999", "torch==2.13.0", "numpy>=2"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "onnx>=1.17", "onnxruntime>=1.20"]
@@ -23,4 +23,10 @@ testpaths = ["tests"]
 
 [tool.uv.sources]
 maia3 = { path = "sources/maia3", editable = true }
+torch = [{ index = "pytorch-cu126", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
 

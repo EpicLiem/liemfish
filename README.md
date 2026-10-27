@@ -4,6 +4,8 @@ A personal move-and-clock imitation project based on Maia3-23M-ponder. It learns
 
 **Current milestone: ready for an initial GPU training experiment.** Games are downloaded and prepared. The real checkpoint loads, CPU forward/backward and checkpoint selection work, and the FP32 ONNX export matches PyTorch. No personal training run has been completed. The browser application comes after training and model selection.
 
+**Lambda transfer package:** `bundles/chess-self-gpu.tar.gz` includes source, pinned pretrained weights, raw games and prepared splits, with a per-file checksum manifest. Follow [the Lambda quick start](docs/lambda-quickstart.md). `scripts/remote.py` uploads and starts the detached setup/training pipeline only when explicitly run with an instance endpoint. No instance has been rented or contacted.
+
 ## Your data
 
 Signed-in Chrome profiles confirmed **MonisVerse** (Chess.com) and **MonisChess** (Lichess). Public exports were saved locally on October 27, 2026. No browser cookies, credentials, or private messages were copied.
@@ -29,7 +31,7 @@ The prepared environment is `.venv`. Run from this directory:
 .venv/bin/chess-self --help
 ```
 
-To rebuild a fresh environment, install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run `bash scripts/setup.sh`. It checks the upstream revision and pretrained checksum, restores dependencies from `uv.lock`, runs tests, and checks the existing dataset. A code-only checkout needs its games fetched/prepared before the final doctor step can pass.
+To rebuild a fresh environment, run `bash scripts/setup.sh` with Python 3 and venv support available. It bootstraps uv 0.13.6 if needed, verifies the bundle or upstream checkout and pretrained checksum, restores dependencies from `uv.lock`, runs tests, and checks the existing dataset. Linux explicitly uses PyTorch 2.13.0 + CUDA 12.6; macOS uses PyTorch 2.13.0 from PyPI. A code-only checkout needs its games fetched/prepared before the final doctor step can pass.
 
 To acquire a new snapshot, use a **new directory**; the downloader intentionally preserves old snapshots:
 
@@ -52,6 +54,8 @@ bash scripts/train-gpu.sh models/runs/heads-01
 The initial run freezes the backbone and trains the move and timing heads at `1e-5`, batch 16, up to eight epochs, with early stopping after two validation checks without improvement. Timing cross-entropy has weight 0.2. These are experimental defaults, not validated hyperparameters. Model selection uses validation move log loss; the unchanged checkpoint remains eligible. Inspect timing metrics too before accepting a model. `--final-blocks 1` enables a separate experiment on the last block, with a fresh output directory.
 
 `best.pt` is a complete checkpoint and `run.json` records hashes, settings, baseline, every epoch, selected epoch, and successful/skipped optimizer updates. An epoch-zero selection means the unchanged model won. CPU `--smoke` runs are explicitly marked smoke-only and must not be used as personal models. Test data is not read for training or selection (only its file hash is recorded).
+
+The log prints progress every 50 batches and an estimate to the next validation pass. Epoch durations and throughput are recorded in `run.json`; checkpoints and reports use atomic file replacement. The detached launcher survives an SSH disconnect, but cannot survive termination of the cloud instance. Completed epochs retain the best checkpoint; restarting optimizer state is not implemented.
 
 After choosing an experiment using validation, compare baseline and personal model on the same untouched test set once:
 

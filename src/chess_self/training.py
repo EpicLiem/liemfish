@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import random
+import time
 from collections import defaultdict
 from pathlib import Path
 
@@ -128,31 +129,44 @@ def train(data: Path, checkpoint: Path, output: Path, *, device="cuda", epochs=8
     params = select_parameters(model, final_blocks)
     optimizer = torch.optim.AdamW(params, lr=learning_rate, weight_decay=.01)
     empirical = timing_baseline(training.rows)
+    print("Evaluating unchanged checkpoint on validation games...", flush=True)
+    run_start = time.perf_counter()
     baseline = evaluate(model, validation, device, batch_size, empirical)
+    baseline_seconds = time.perf_counter() - run_start
     output.mkdir(parents=True, exist_ok=True)
     settings = dict(device=device, epochs=epochs, batch_size=batch_size, learning_rate=learning_rate,
                     timing_weight=timing_weight, patience=patience, final_blocks=final_blocks, seed=seed, smoke=smoke)
     manifest = {"settings": settings, "source_commit": SOURCE_COMMIT, "checkpoint_sha256": file_hash(checkpoint),
                 "data_sha256": {name: file_hash(data / name) for name in ("train.jsonl", "val.jsonl", "test.jsonl")},
                 "trainable_parameters": sum(p.numel() for p in params), "baseline": baseline, "epochs": [],
-                "selection_metric": "validation move_nll", "selected_epoch": 0, "test_evaluated": False}
+                "selection_metric": "validation move_nll", "selected_epoch": 0, "test_evaluated": False,
+                "baseline_seconds": baseline_seconds}
     best, stale = baseline["all"]["move_nll"], 0
 
     def save(epoch):
+        temporary = output / "best.pt.tmp"
         torch.save({"model_state_dict": {k: v.detach().cpu() for k, v in model.state_dict().items()},
                     "source_commit": SOURCE_COMMIT, "settings": settings, "epoch": epoch,
-                    "personalized": epoch > 0 and not smoke, "smoke_only": smoke}, output / "best.pt")
+                    "personalized": epoch > 0 and not smoke, "smoke_only": smoke}, temporary)
+        temporary.replace(output / "best.pt")
+
+    def record():
+        temporary = output / "run.json.tmp"
+        temporary.write_text(json.dumps(manifest, indent=2) + "\n")
+        temporary.replace(output / "run.json")
 
     save(0)
+    record()
     loader = DataLoader(training, batch_size=batch_size, shuffle=True,
                         generator=torch.Generator().manual_seed(seed))
     use_amp = device == "cuda"
     scaler = torch.amp.GradScaler("cuda", enabled=use_amp)
     updates, skipped_updates = 0, 0
     for epoch in range(1, epochs + 1):
+        epoch_start = time.perf_counter()
         model.train()
         losses = []
-        for raw in loader:
+        for batch_index, raw in enumerate(loader, 1):
             batch = to_device(raw, device)
             optimizer.zero_grad(set_to_none=True)
             with torch.autocast(device_type=device, dtype=torch.float16, enabled=use_amp):
@@ -171,8 +185,16 @@ def train(data: Path, checkpoint: Path, output: Path, *, device="cuda", epochs=8
             else:
                 updates += 1
             losses.append(loss.item())
+            if batch_index == 1 or batch_index % 50 == 0 or batch_index == len(loader):
+                elapsed = time.perf_counter() - epoch_start
+                remaining = elapsed / batch_index * (len(loader) - batch_index)
+                print(f"epoch {epoch}/{epochs} batch {batch_index}/{len(loader)}: "
+                      f"loss {loss.item():.4f}, {elapsed:.1f}s elapsed, ~{remaining:.0f}s to validation", flush=True)
+        training_seconds = time.perf_counter() - epoch_start
         metrics = evaluate(model, validation, device, batch_size, empirical)
-        manifest["epochs"].append({"epoch": epoch, "training_loss": float(np.mean(losses)), "validation": metrics})
+        manifest["epochs"].append({"epoch": epoch, "training_loss": float(np.mean(losses)), "validation": metrics,
+                                   "training_seconds": training_seconds, "total_seconds": time.perf_counter() - epoch_start,
+                                   "positions_per_second": len(training) / training_seconds})
         if metrics["all"]["move_nll"] < best:
             best, stale = metrics["all"]["move_nll"], 0
             manifest["selected_epoch"] = epoch
@@ -181,7 +203,8 @@ def train(data: Path, checkpoint: Path, output: Path, *, device="cuda", epochs=8
             stale += 1
         manifest["optimizer_steps"] = updates
         manifest["skipped_amp_updates"] = skipped_updates
-        (output / "run.json").write_text(json.dumps(manifest, indent=2) + "\n")
+        manifest["elapsed_seconds"] = time.perf_counter() - run_start
+        record()
         print(f"epoch {epoch}: validation move NLL {metrics['all']['move_nll']:.4f}; best {best:.4f}", flush=True)
         if stale >= patience:
             break

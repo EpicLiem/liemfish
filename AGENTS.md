@@ -7,3 +7,5 @@
 - Personal archives, processed examples, trained weights and reports stay local and are ignored by Git. Do not upload or publish them without permission.
 - Keep game-level holdouts intact; never use test data for training decisions. Elapsed and post-move clock values are labels, never model features.
 - This project's current milestone is GPU training readiness. CPU smoke artifacts are not personalized models. Report browser parity separately from native ONNX parity.
+- `python3 scripts/bundle.py` builds the allowlisted transfer archive; verify it after extraction. Rebuild after source/data edits. Linux torch uses the explicit CUDA 12.6 index in the lock.
+- `scripts/remote.py` is opt-in SSH deployment/collection; never invoke it without an authorized endpoint. `scripts/jobs.py start NAME --mode full` runs detached setup, GPU preflight and training. Inspect `jobs/NAME/status.json` and `output.log`.

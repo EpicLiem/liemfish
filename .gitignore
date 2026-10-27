@@ -9,4 +9,8 @@ sources/maia3/
 *.onnx
 *.onnx.data
 .DS_Store
+bundles/
+jobs/
+BUNDLE-MANIFEST.json
+.bootstrap/
 

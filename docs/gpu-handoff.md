@@ -2,9 +2,11 @@
 
 The local preparation milestone is complete. Next is an actual measured training experiment on your data. The project does not open an SSH connection or provision cloud resources itself.
 
+For the prepared transfer bundle and optional SSH deployment helper, use [Lambda quick start](lambda-quickstart.md). The helper connects only when explicitly invoked with the instance endpoint. The detached full pipeline runs setup, a real GPU preflight, and training in order.
+
 ## Machine and transfer
 
-Use Linux with Python 3.12, Git, uv, an NVIDIA GPU and a working driver. A 16 GB CUDA card is the initial target from the background brief; smaller cards may work with lower batch sizes. No VRAM or duration guarantee has been measured. Allow disk space for PyTorch/CUDA dependencies plus multiple approximately 109 MB checkpoints and data snapshots.
+Use Linux with Python 3/venv support, an NVIDIA GPU and a working driver. Setup installs uv when needed and creates a Python 3.12 environment from the pinned lock. The transfer bundle includes upstream source so Git is needed only for code-only setup. A single A100 is the intended rental target. No VRAM or duration guarantee has been measured. Allow disk space for PyTorch/CUDA dependencies plus multiple approximately 109 MB checkpoints and data snapshots.
 
 Copy the entire `chess-self` folder to the authorized GPU machine, **including `data/`**, excluding `.venv/`, caches and `reports/cpu-smoke*/`. Do not copy a Mac virtual environment to Linux. The source and pinned pretrained checkpoint can be restored by setup. Keep the original raw manifests and processed splits together.
 
