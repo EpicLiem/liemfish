@@ -1,0 +1,11 @@
+{
+  "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+  "history_fens": [
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+  ],
+  "elo_self": 1000,
+  "elo_oppo": 1000,
+  "initial_seconds": 180,
+  "increment_seconds": 2,
+  "remaining_seconds": 180
+}

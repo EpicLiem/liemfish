@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chess-self"
+version = "0.1.0"
+description = "Personal Maia3 move and clock imitation experiments"
+requires-python = ">=3.12,<3.14"
+dependencies = ["maia3", "requests>=2.32", "python-chess==1.999", "torch>=2.6", "numpy>=2"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "onnx>=1.17", "onnxruntime>=1.20"]
+
+[project.scripts]
+chess-self = "chess_self.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.uv.sources]
+maia3 = { path = "sources/maia3", editable = true }
+
