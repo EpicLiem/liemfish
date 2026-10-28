@@ -1,6 +1,6 @@
 {
   "name": "@epicliem/liemfish-browser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Personalized Liemfish move and timing inference in a browser worker",
   "type": "module",
   "license": "AGPL-3.0",
