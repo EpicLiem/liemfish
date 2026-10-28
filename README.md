@@ -22,6 +22,8 @@ In 36 sampled games per model against Stockfish, screened direct material-loss e
 
 The E05 timing weights are unchanged. On 896 recent timing labels, mean prediction error remained about **5.32 seconds**, with negligible change in the distribution score. These are development results; the original 76-game test set remains untouched.
 
+The [October 2026 imitation follow-up](docs/experiments/imitation-v1-results.md) tested public-data corrections, personal residuals, timing alternatives, and paired games. Five of six independent move-correction runs selected the unchanged policy; the remaining gain was small and inconclusive. The released model remains unchanged.
+
 ## Browser inference, verified
 
 The backbone and timing exports pass native-to-ONNX numerical parity checks. The browser package runs both models in a Web Worker using single-threaded WebAssembly.

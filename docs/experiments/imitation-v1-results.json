@@ -1,0 +1,3643 @@
+{
+  "date": "2026-10-28",
+  "decision": "retain released reference; no useful replicated policy improvement",
+  "test_evaluated": false,
+  "development_reused": true,
+  "source_reports_sha256": {
+    "reports/imitation-v1/results/screen-evaluation.json": "01b1aacad0da745915948591b7c9e1481b1ede1747d3150820a433e7b43b0c0d",
+    "reports/imitation-v1/results/replications-evaluation.json": "c54ee96bf9987f034398cb1ad49821c294943824dc60fd79680f0ab3a69e6417",
+    "reports/imitation-v1/results/timing-comparisons.json": "562cd4173c58ac2abe5feb5b2127da7f61c856ab77133a8bd77e878abf16b418",
+    "reports/imitation-v1/results/fixed-tail-priors.json": "1c5061d2da19680af2e63df97588ba53b44dfef5cb51a7d7ca15f3bec7378077",
+    "reports/imitation-v1/rollouts-bce29/comparison.json": "6c133193d024e7f91413682606936b6943d431a72bea546261b3dc654a03c57d",
+    "reports/imitation-v1/browser/benchmark.json": "9fe43921dfd30ad32ff041d59bbda81c3b27dcd2ea9433691f19debb4a89e84b",
+    "reports/imitation-v1/error-audit/summary.json": "c2736422da2beb2c601db9126503c037e553e9102cd80c0b910cc1a4ab8c1361"
+  },
+  "reference_artifacts_sha256": {
+    "models/personalized/recent-policy-epoch6.pt": "52f9339db166dc07e61fc8c01448ba0b0a83befbf435fd864ac6a510f5422427",
+    "models/personalized/e05-recent-policy.pt": "072fc9d483e2ea0f4dfd78cc5b7624f9fa9bb2cde7854ccd9dfbaa09035928eb"
+  },
+  "move": {
+    "screen": {
+      "supervised": {
+        "selected_lambda": 0.0,
+        "splits": {
+          "earlydev": {
+            "overall": {
+              "positions": 606,
+              "games": 24,
+              "reference_nll": 1.2217385392659497,
+              "candidate_nll": 1.2217385392659497,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 24,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 12,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 63,
+                "games": 20,
+                "reference_nll": 2.1889593324490955,
+                "candidate_nll": 2.1889593324490955,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 20,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 12,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 13,
+                "games": 11,
+                "reference_nll": 2.638675116575681,
+                "candidate_nll": 2.638675116575681,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 14,
+                "games": 10,
+                "reference_nll": 2.979492106607982,
+                "candidate_nll": 2.979492106607982,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 10,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              }
+            }
+          },
+          "calibration": {
+            "overall": {
+              "positions": 329,
+              "games": 15,
+              "reference_nll": 1.6283777451940946,
+              "candidate_nll": 1.6283777451940946,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 15,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 4,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 56,
+                "games": 13,
+                "reference_nll": 2.242505272118641,
+                "candidate_nll": 2.242505272118641,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 13,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 17,
+                "games": 11,
+                "reference_nll": 2.900920976610745,
+                "candidate_nll": 2.900920976610745,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 0,
+                "games": 0,
+                "conclusion": "insufficient observations"
+              }
+            }
+          }
+        }
+      },
+      "bce": {
+        "selected_lambda": 0.0,
+        "splits": {
+          "earlydev": {
+            "overall": {
+              "positions": 606,
+              "games": 24,
+              "reference_nll": 1.2217385392659497,
+              "candidate_nll": 1.2217385392659497,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 24,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 12,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 63,
+                "games": 20,
+                "reference_nll": 2.1889593324490955,
+                "candidate_nll": 2.1889593324490955,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 20,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 12,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 13,
+                "games": 11,
+                "reference_nll": 2.638675116575681,
+                "candidate_nll": 2.638675116575681,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 14,
+                "games": 10,
+                "reference_nll": 2.979492106607982,
+                "candidate_nll": 2.979492106607982,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 10,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              }
+            }
+          },
+          "calibration": {
+            "overall": {
+              "positions": 329,
+              "games": 15,
+              "reference_nll": 1.6283777451940946,
+              "candidate_nll": 1.6283777451940946,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 15,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 4,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 56,
+                "games": 13,
+                "reference_nll": 2.242505272118641,
+                "candidate_nll": 2.242505272118641,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 13,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 17,
+                "games": 11,
+                "reference_nll": 2.900920976610745,
+                "candidate_nll": 2.900920976610745,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 0,
+                "games": 0,
+                "conclusion": "insufficient observations"
+              }
+            }
+          }
+        }
+      }
+    },
+    "replications": {
+      "supervised/seed-17": {
+        "selected_lambda": 0.0,
+        "splits": {
+          "earlydev": {
+            "overall": {
+              "positions": 606,
+              "games": 24,
+              "reference_nll": 1.2217385392659497,
+              "candidate_nll": 1.2217385392659497,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 24,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 12,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 63,
+                "games": 20,
+                "reference_nll": 2.1889593324490955,
+                "candidate_nll": 2.1889593324490955,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 20,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 12,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 13,
+                "games": 11,
+                "reference_nll": 2.638675116575681,
+                "candidate_nll": 2.638675116575681,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 14,
+                "games": 10,
+                "reference_nll": 2.979492106607982,
+                "candidate_nll": 2.979492106607982,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 10,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              }
+            }
+          },
+          "calibration": {
+            "overall": {
+              "positions": 329,
+              "games": 15,
+              "reference_nll": 1.6283777451940946,
+              "candidate_nll": 1.6283777451940946,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 15,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 4,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 56,
+                "games": 13,
+                "reference_nll": 2.242505272118641,
+                "candidate_nll": 2.242505272118641,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 13,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 17,
+                "games": 11,
+                "reference_nll": 2.900920976610745,
+                "candidate_nll": 2.900920976610745,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 0,
+                "games": 0,
+                "conclusion": "insufficient observations"
+              }
+            }
+          }
+        }
+      },
+      "supervised/seed-29": {
+        "selected_lambda": 0.0,
+        "splits": {
+          "earlydev": {
+            "overall": {
+              "positions": 606,
+              "games": 24,
+              "reference_nll": 1.2217385392659497,
+              "candidate_nll": 1.2217385392659497,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 24,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 12,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 63,
+                "games": 20,
+                "reference_nll": 2.1889593324490955,
+                "candidate_nll": 2.1889593324490955,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 20,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 12,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 13,
+                "games": 11,
+                "reference_nll": 2.638675116575681,
+                "candidate_nll": 2.638675116575681,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 14,
+                "games": 10,
+                "reference_nll": 2.979492106607982,
+                "candidate_nll": 2.979492106607982,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 10,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              }
+            }
+          },
+          "calibration": {
+            "overall": {
+              "positions": 329,
+              "games": 15,
+              "reference_nll": 1.6283777451940946,
+              "candidate_nll": 1.6283777451940946,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 15,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 4,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 56,
+                "games": 13,
+                "reference_nll": 2.242505272118641,
+                "candidate_nll": 2.242505272118641,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 13,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 17,
+                "games": 11,
+                "reference_nll": 2.900920976610745,
+                "candidate_nll": 2.900920976610745,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 0,
+                "games": 0,
+                "conclusion": "insufficient observations"
+              }
+            }
+          }
+        }
+      },
+      "supervised/seed-43": {
+        "selected_lambda": 0.0,
+        "splits": {
+          "earlydev": {
+            "overall": {
+              "positions": 606,
+              "games": 24,
+              "reference_nll": 1.2217385392659497,
+              "candidate_nll": 1.2217385392659497,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 24,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 12,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 63,
+                "games": 20,
+                "reference_nll": 2.1889593324490955,
+                "candidate_nll": 2.1889593324490955,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 20,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 12,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 13,
+                "games": 11,
+                "reference_nll": 2.638675116575681,
+                "candidate_nll": 2.638675116575681,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 14,
+                "games": 10,
+                "reference_nll": 2.979492106607982,
+                "candidate_nll": 2.979492106607982,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 10,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              }
+            }
+          },
+          "calibration": {
+            "overall": {
+              "positions": 329,
+              "games": 15,
+              "reference_nll": 1.6283777451940946,
+              "candidate_nll": 1.6283777451940946,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 15,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 4,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 56,
+                "games": 13,
+                "reference_nll": 2.242505272118641,
+                "candidate_nll": 2.242505272118641,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 13,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 17,
+                "games": 11,
+                "reference_nll": 2.900920976610745,
+                "candidate_nll": 2.900920976610745,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 0,
+                "games": 0,
+                "conclusion": "insufficient observations"
+              }
+            }
+          }
+        }
+      },
+      "bce/seed-17": {
+        "selected_lambda": 0.0,
+        "splits": {
+          "earlydev": {
+            "overall": {
+              "positions": 606,
+              "games": 24,
+              "reference_nll": 1.2217385392659497,
+              "candidate_nll": 1.2217385392659497,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 24,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 12,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 63,
+                "games": 20,
+                "reference_nll": 2.1889593324490955,
+                "candidate_nll": 2.1889593324490955,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 20,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 12,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 13,
+                "games": 11,
+                "reference_nll": 2.638675116575681,
+                "candidate_nll": 2.638675116575681,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 14,
+                "games": 10,
+                "reference_nll": 2.979492106607982,
+                "candidate_nll": 2.979492106607982,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 10,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              }
+            }
+          },
+          "calibration": {
+            "overall": {
+              "positions": 329,
+              "games": 15,
+              "reference_nll": 1.6283777451940946,
+              "candidate_nll": 1.6283777451940946,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 15,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 4,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 56,
+                "games": 13,
+                "reference_nll": 2.242505272118641,
+                "candidate_nll": 2.242505272118641,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 13,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 17,
+                "games": 11,
+                "reference_nll": 2.900920976610745,
+                "candidate_nll": 2.900920976610745,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 0,
+                "games": 0,
+                "conclusion": "insufficient observations"
+              }
+            }
+          }
+        }
+      },
+      "bce/seed-29": {
+        "selected_lambda": 0.25,
+        "splits": {
+          "earlydev": {
+            "overall": {
+              "positions": 606,
+              "games": 24,
+              "reference_nll": 1.2217385392659497,
+              "candidate_nll": 1.2206434610998258,
+              "paired_nll": {
+                "difference": -0.0010950781661239468,
+                "ci95": [
+                  -0.0031966427529983663,
+                  0.0010744182709741608
+                ],
+                "games": 24,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": -0.0010950781661239468,
+                "ci95": [
+                  -0.0038412401460498915,
+                  0.00119087789790439
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 12,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 63,
+                "games": 20,
+                "reference_nll": 2.1889593324490955,
+                "candidate_nll": 2.180045706412149,
+                "paired_nll": {
+                  "difference": -0.008913626036946736,
+                  "ci95": [
+                    -0.015069536537188908,
+                    -0.0035483860262096505
+                  ],
+                  "games": 20,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": -0.008913626036946736,
+                  "ci95": [
+                    -0.01353530970253167,
+                    -0.0032148188633738823
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 12,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 13,
+                "games": 11,
+                "reference_nll": 2.638675116575681,
+                "candidate_nll": 2.6200827199679155,
+                "paired_nll": {
+                  "difference": -0.018592396607765786,
+                  "ci95": [
+                    -0.03926530297506939,
+                    -0.0040715311587595044
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": -0.018592396607765786,
+                  "ci95": [
+                    -0.0432304945256975,
+                    -0.003595958153406779
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 14,
+                "games": 10,
+                "reference_nll": 2.979492106607982,
+                "candidate_nll": 2.9663567479167665,
+                "paired_nll": {
+                  "difference": -0.013135358691215515,
+                  "ci95": [
+                    -0.036322858730951944,
+                    0.000984833504566367
+                  ],
+                  "games": 10,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": -0.013135358691215515,
+                  "ci95": [
+                    -0.041037559509277344,
+                    0.0016775441666444142
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              }
+            }
+          },
+          "calibration": {
+            "overall": {
+              "positions": 329,
+              "games": 15,
+              "reference_nll": 1.6283777451940946,
+              "candidate_nll": 1.6280289466427724,
+              "paired_nll": {
+                "difference": -0.0003487985513221167,
+                "ci95": [
+                  -0.0026425410631149967,
+                  0.002557043873316044
+                ],
+                "games": 15,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": -0.0003487985513221167,
+                "ci95": [
+                  -0.003531790794210231,
+                  0.0016031352382513784
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 4,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 56,
+                "games": 13,
+                "reference_nll": 2.242505272118641,
+                "candidate_nll": 2.237649999625449,
+                "paired_nll": {
+                  "difference": -0.004855272493192128,
+                  "ci95": [
+                    -0.010615940499922325,
+                    0.00140880781777051
+                  ],
+                  "games": 13,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": -0.004855272493192128,
+                  "ci95": [
+                    -0.007265528539816538,
+                    -0.0019559589299288664
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 17,
+                "games": 11,
+                "reference_nll": 2.900920976610745,
+                "candidate_nll": 2.9006519072196064,
+                "paired_nll": {
+                  "difference": -0.00026906939113841336,
+                  "ci95": [
+                    -0.019780579243415322,
+                    0.018788198195397846
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": -0.00026906939113841336,
+                  "ci95": [
+                    -0.021104931831359863,
+                    0.014316034317016602
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 0,
+                "games": 0,
+                "conclusion": "insufficient observations"
+              }
+            }
+          }
+        }
+      },
+      "bce/seed-43": {
+        "selected_lambda": 0.0,
+        "splits": {
+          "earlydev": {
+            "overall": {
+              "positions": 606,
+              "games": 24,
+              "reference_nll": 1.2217385392659497,
+              "candidate_nll": 1.2217385392659497,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 24,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 12,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 63,
+                "games": 20,
+                "reference_nll": 2.1889593324490955,
+                "candidate_nll": 2.1889593324490955,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 20,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 12,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 13,
+                "games": 11,
+                "reference_nll": 2.638675116575681,
+                "candidate_nll": 2.638675116575681,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 14,
+                "games": 10,
+                "reference_nll": 2.979492106607982,
+                "candidate_nll": 2.979492106607982,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 10,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 8,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              }
+            }
+          },
+          "calibration": {
+            "overall": {
+              "positions": 329,
+              "games": 15,
+              "reference_nll": 1.6283777451940946,
+              "candidate_nll": 1.6283777451940946,
+              "paired_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "games": 15,
+                "resamples": 10000,
+                "unit": "whole_game",
+                "selection_adjusted": false
+              },
+              "noninferiority_margin_nats": 0.02,
+              "noninferiority_supported": true,
+              "selection_optimism_corrected": false,
+              "paired_session_nll": {
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "resamples": 10000,
+                "unit": "prespecified_session_group",
+                "selection_adjusted": false,
+                "sessions": 4,
+                "noninferiority_supported": true,
+                "noninferiority_agrees_with_game_bootstrap": true
+              }
+            },
+            "human_error_slices": {
+              "stable_loss_ge200_or_mate": {
+                "positions": 56,
+                "games": 13,
+                "reference_nll": 2.242505272118641,
+                "candidate_nll": 2.242505272118641,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 13,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "stable_direct_material_screen": {
+                "positions": 17,
+                "games": 11,
+                "reference_nll": 2.900920976610745,
+                "candidate_nll": 2.900920976610745,
+                "paired_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "games": 11,
+                  "resamples": 10000,
+                  "unit": "whole_game",
+                  "selection_adjusted": false
+                },
+                "noninferiority_margin_nats": 0.05,
+                "noninferiority_supported": true,
+                "selection_optimism_corrected": false,
+                "paired_session_nll": {
+                  "difference": 0.0,
+                  "ci95": [
+                    0.0,
+                    0.0
+                  ],
+                  "resamples": 10000,
+                  "unit": "prespecified_session_group",
+                  "selection_adjusted": false,
+                  "sessions": 4,
+                  "noninferiority_supported": true,
+                  "noninferiority_agrees_with_game_bootstrap": true
+                }
+              },
+              "prior14_screen_member": {
+                "positions": 0,
+                "games": 0,
+                "conclusion": "insufficient observations"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "timing": [
+    {
+      "arm": "e03-pooled",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e03-clock",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e03-clock-phase",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e03-position",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e04-window4",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e04-window8",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e04-gru",
+      "selected_epoch": 2,
+      "initialization": "A newly fitted timing model; compare with both its matched zero-residual control and selected frozen E05.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493485313609921,
+          "paired_crps": {
+            "difference": 0.04696785350682117,
+            "ci95": [
+              0.0004404973870581382,
+              0.09371935074138524
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.613059459712796,
+          "paired_crps": {
+            "difference": 0.10820697242665105,
+            "ci95": [
+              0.047098233691549043,
+              0.18093365798315428
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e05-attributes",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e05-squares",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e06-tail",
+      "selected_epoch": 0,
+      "initialization": "Selected frozen E05 plus an engineering prior: one percent total tail mass and uniform tail-bin logits. Epoch zero is not a learned timing improvement.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.437430895439689,
+          "paired_crps": {
+            "difference": -0.009086564663409744,
+            "ci95": [
+              -0.019457944572399917,
+              -0.001049486894772295
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.5019956399581633,
+          "paired_crps": {
+            "difference": -0.0028568473279814775,
+            "ci95": [
+              -0.007992524653076538,
+              0.0007745187014771773
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e07-fraction",
+      "selected_epoch": 0,
+      "initialization": "Untrained output family was retained; Beta starts uniform in clock fraction, binned fraction starts uniform bin masses.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 14.784915609259178,
+          "paired_crps": {
+            "difference": 10.33839814915608,
+            "ci95": [
+              8.61746497730031,
+              12.479658716901067
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 7.902532099414912,
+          "paired_crps": {
+            "difference": 4.397679612128767,
+            "ci95": [
+              3.842398408130802,
+              5.095405945703958
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e07-beta",
+      "selected_epoch": 12,
+      "initialization": "A newly fitted timing model; compare with both its matched zero-residual control and selected frozen E05.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.633764551896238,
+          "paired_crps": {
+            "difference": 0.18724709179313814,
+            "ci95": [
+              0.0575944996035584,
+              0.35908290921787195
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.9304291185259204,
+          "paired_crps": {
+            "difference": 0.42557663123977474,
+            "ci95": [
+              0.24125766059281942,
+              0.6207674749567559
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e08-point",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e09-recent",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e09-all",
+      "selected_epoch": 7,
+      "initialization": "A newly fitted timing model; compare with both its matched zero-residual control and selected frozen E05.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.473822729582902,
+          "paired_crps": {
+            "difference": 0.027305269479802392,
+            "ci95": [
+              -0.013836966704335448,
+              0.0720290487284394
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.563673498508109,
+          "paired_crps": {
+            "difference": 0.058821011221964335,
+            "ci95": [
+              0.0019384422097300745,
+              0.1263248443726735
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e09-age180",
+      "selected_epoch": 1,
+      "initialization": "A newly fitted timing model; compare with both its matched zero-residual control and selected frozen E05.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.486748433001345,
+          "paired_crps": {
+            "difference": 0.04023097289824656,
+            "ci95": [
+              -0.0041983533163899986,
+              0.0844285119587782
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.626949396641469,
+          "paired_crps": {
+            "difference": 0.12209690935532413,
+            "ci95": [
+              0.05972874795539696,
+              0.19733292697488766
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e09-age365",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e09-age730",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e09-control",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e11-familiarity",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "e12-difficulty",
+      "selected_epoch": 0,
+      "initialization": "Zero new residual retained: original Maia timing logits, not the selected trained E05 timing model.",
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023759,
+            "ci95": [
+              -0.001436026765045973,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672345,
+            "ci95": [
+              0.041504814678674895,
+              0.1760954769763887
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    },
+    {
+      "arm": "E10/public_personal",
+      "selected_epoch": 1,
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.547336020780367,
+          "paired_crps": {
+            "difference": 0.10081856067726709,
+            "ci95": [
+              0.06283959068211194,
+              0.1398380993053556
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 582,
+            "excluded_pairs": 0,
+            "left_nonfinite": 0,
+            "right_nonfinite": 0,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": true
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.5497561041058887,
+          "paired_crps": {
+            "difference": 0.0449036168197434,
+            "ci95": [
+              -0.00763551967859637,
+              0.09948291424292503
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 314,
+            "excluded_pairs": 0,
+            "left_nonfinite": 0,
+            "right_nonfinite": 0,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": true
+          }
+        }
+      }
+    },
+    {
+      "arm": "E10/personal_only",
+      "selected_epoch": 0,
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.493573562303337,
+          "paired_crps": {
+            "difference": 0.04705610220023761,
+            "ci95": [
+              -0.0014360267650459478,
+              0.10121509012790181
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 582,
+            "excluded_pairs": 0,
+            "left_nonfinite": 0,
+            "right_nonfinite": 0,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": true
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.607145606522869,
+          "paired_crps": {
+            "difference": 0.10229311923672346,
+            "ci95": [
+              0.04150481467867488,
+              0.17609547697638872
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 314,
+            "excluded_pairs": 0,
+            "left_nonfinite": 0,
+            "right_nonfinite": 0,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": true
+          }
+        }
+      }
+    },
+    {
+      "arm": "E10/public_only",
+      "selected_epoch": 3,
+      "splits": {
+        "earlydev": {
+          "reference_crps": 4.4465174601031,
+          "candidate_crps": 4.57365710118814,
+          "paired_crps": {
+            "difference": 0.12713964108504097,
+            "ci95": [
+              0.08836855336028956,
+              0.16538620641216373
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 582,
+            "excluded_pairs": 0,
+            "left_nonfinite": 0,
+            "right_nonfinite": 0,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": true
+          }
+        },
+        "calibration": {
+          "reference_crps": 3.504852487286145,
+          "candidate_crps": 3.58121706416597,
+          "paired_crps": {
+            "difference": 0.07636457687982516,
+            "ci95": [
+              0.025409400643997722,
+              0.13017616829115672
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 314,
+            "excluded_pairs": 0,
+            "left_nonfinite": 0,
+            "right_nonfinite": 0,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": true
+          }
+        }
+      }
+    }
+  ],
+  "policy_control": {
+    "earlydev": {
+      "overall": {
+        "positions": 606,
+        "games": 24,
+        "reference_nll": 1.2217385392659497,
+        "candidate_nll": 1.2186452087481536,
+        "paired_nll": {
+          "difference": -0.0030933305177962096,
+          "ci95": [
+            -0.011161381851462837,
+            0.005627167705494988
+          ],
+          "games": 24,
+          "resamples": 10000,
+          "unit": "whole_game",
+          "selection_adjusted": false
+        },
+        "noninferiority_margin_nats": 0.02,
+        "noninferiority_supported": true,
+        "selection_optimism_corrected": false,
+        "paired_session_nll": {
+          "difference": -0.0030933305177962096,
+          "ci95": [
+            -0.01015383228626715,
+            0.005622063243635433
+          ],
+          "resamples": 10000,
+          "unit": "prespecified_session_group",
+          "selection_adjusted": false,
+          "sessions": 12,
+          "noninferiority_supported": true,
+          "noninferiority_agrees_with_game_bootstrap": true
+        }
+      },
+      "human_error_slices": {
+        "stable_loss_ge200_or_mate": {
+          "positions": 63,
+          "games": 20,
+          "reference_nll": 2.1889593324490955,
+          "candidate_nll": 2.1800627110023347,
+          "paired_nll": {
+            "difference": -0.008896621446760873,
+            "ci95": [
+              -0.02619591295953284,
+              0.014866966864182828
+            ],
+            "games": 20,
+            "resamples": 10000,
+            "unit": "whole_game",
+            "selection_adjusted": false
+          },
+          "noninferiority_margin_nats": 0.05,
+          "noninferiority_supported": true,
+          "selection_optimism_corrected": false,
+          "paired_session_nll": {
+            "difference": -0.008896621446760873,
+            "ci95": [
+              -0.02463289836265908,
+              0.017248946578641018
+            ],
+            "resamples": 10000,
+            "unit": "prespecified_session_group",
+            "selection_adjusted": false,
+            "sessions": 12,
+            "noninferiority_supported": true,
+            "noninferiority_agrees_with_game_bootstrap": true
+          }
+        },
+        "stable_direct_material_screen": {
+          "positions": 13,
+          "games": 11,
+          "reference_nll": 2.638675116575681,
+          "candidate_nll": 2.5493113066141424,
+          "paired_nll": {
+            "difference": -0.08936380996153905,
+            "ci95": [
+              -0.14409753680229187,
+              -0.02792337889021093
+            ],
+            "games": 11,
+            "resamples": 10000,
+            "unit": "whole_game",
+            "selection_adjusted": false
+          },
+          "noninferiority_margin_nats": 0.05,
+          "noninferiority_supported": true,
+          "selection_optimism_corrected": false,
+          "paired_session_nll": {
+            "difference": -0.08936380996153905,
+            "ci95": [
+              -0.15266003691487842,
+              -0.04291696669716467
+            ],
+            "resamples": 10000,
+            "unit": "prespecified_session_group",
+            "selection_adjusted": false,
+            "sessions": 8,
+            "noninferiority_supported": true,
+            "noninferiority_agrees_with_game_bootstrap": true
+          }
+        },
+        "prior14_screen_member": {
+          "positions": 14,
+          "games": 10,
+          "reference_nll": 2.979492106607982,
+          "candidate_nll": 2.9281504484159604,
+          "paired_nll": {
+            "difference": -0.05134165819202151,
+            "ci95": [
+              -0.10521428106495967,
+              0.00944738090570483
+            ],
+            "games": 10,
+            "resamples": 10000,
+            "unit": "whole_game",
+            "selection_adjusted": false
+          },
+          "noninferiority_margin_nats": 0.05,
+          "noninferiority_supported": true,
+          "selection_optimism_corrected": false,
+          "paired_session_nll": {
+            "difference": -0.05134165819202151,
+            "ci95": [
+              -0.10561610272420305,
+              0.018413169796650204
+            ],
+            "resamples": 10000,
+            "unit": "prespecified_session_group",
+            "selection_adjusted": false,
+            "sessions": 8,
+            "noninferiority_supported": true,
+            "noninferiority_agrees_with_game_bootstrap": true
+          }
+        }
+      }
+    },
+    "calibration": {
+      "overall": {
+        "positions": 329,
+        "games": 15,
+        "reference_nll": 1.6283777451940946,
+        "candidate_nll": 1.6308134046247325,
+        "paired_nll": {
+          "difference": 0.002435659430638001,
+          "ci95": [
+            -0.004838998021582607,
+            0.011996000209905034
+          ],
+          "games": 15,
+          "resamples": 10000,
+          "unit": "whole_game",
+          "selection_adjusted": false
+        },
+        "noninferiority_margin_nats": 0.02,
+        "noninferiority_supported": true,
+        "selection_optimism_corrected": false,
+        "paired_session_nll": {
+          "difference": 0.002435659430638001,
+          "ci95": [
+            -0.00726123277018679,
+            0.00729016421887257
+          ],
+          "resamples": 10000,
+          "unit": "prespecified_session_group",
+          "selection_adjusted": false,
+          "sessions": 4,
+          "noninferiority_supported": true,
+          "noninferiority_agrees_with_game_bootstrap": true
+        }
+      },
+      "human_error_slices": {
+        "stable_loss_ge200_or_mate": {
+          "positions": 56,
+          "games": 13,
+          "reference_nll": 2.242505272118641,
+          "candidate_nll": 2.2599159363391146,
+          "paired_nll": {
+            "difference": 0.017410664220473597,
+            "ci95": [
+              -0.006774885601231029,
+              0.047103553679796614
+            ],
+            "games": 13,
+            "resamples": 10000,
+            "unit": "whole_game",
+            "selection_adjusted": false
+          },
+          "noninferiority_margin_nats": 0.05,
+          "noninferiority_supported": true,
+          "selection_optimism_corrected": false,
+          "paired_session_nll": {
+            "difference": 0.017410664220473597,
+            "ci95": [
+              0.002425579414252312,
+              0.026477148949072278
+            ],
+            "resamples": 10000,
+            "unit": "prespecified_session_group",
+            "selection_adjusted": false,
+            "sessions": 4,
+            "noninferiority_supported": true,
+            "noninferiority_agrees_with_game_bootstrap": true
+          }
+        },
+        "stable_direct_material_screen": {
+          "positions": 17,
+          "games": 11,
+          "reference_nll": 2.900920976610745,
+          "candidate_nll": 2.931630281841054,
+          "paired_nll": {
+            "difference": 0.030709305230308983,
+            "ci95": [
+              -0.02931226985529065,
+              0.09072853915748136
+            ],
+            "games": 11,
+            "resamples": 10000,
+            "unit": "whole_game",
+            "selection_adjusted": false
+          },
+          "noninferiority_margin_nats": 0.05,
+          "noninferiority_supported": false,
+          "selection_optimism_corrected": false,
+          "paired_session_nll": {
+            "difference": 0.030709305230308983,
+            "ci95": [
+              -0.025066574414571125,
+              0.06272208074043537
+            ],
+            "resamples": 10000,
+            "unit": "prespecified_session_group",
+            "selection_adjusted": false,
+            "sessions": 4,
+            "noninferiority_supported": false,
+            "noninferiority_agrees_with_game_bootstrap": true
+          }
+        },
+        "prior14_screen_member": {
+          "positions": 0,
+          "games": 0,
+          "conclusion": "insufficient observations"
+        }
+      }
+    }
+  },
+  "tail_prior": {
+    "training_counts": {
+      "contexts": 2680,
+      "eligible_timed_intervals": 2581,
+      "excluded_missing_or_invalid": 99,
+      "observed_ge_99_9_seconds": 1,
+      "empirical_observed_tail_rate": 0.0003874467260751647,
+      "maximum_observed_seconds": 104.30000000000001,
+      "interpretation": "Empirical observed duration frequency; not a known latent tail probability. Clocks and interval censoring affect the fitted gate."
+    },
+    "fitted_rate": 0.0008299976023948257,
+    "candidates": {
+      "engineering_one_percent": {
+        "rate": 0.01,
+        "splits": {
+          "earlydev": {
+            "difference": -0.009086564663409744,
+            "ci95": [
+              -0.019457944572399917,
+              -0.001049486894772295
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          },
+          "calibration": {
+            "difference": -0.0028568473279814775,
+            "ci95": [
+              -0.007992524653076538,
+              0.0007745187014771773
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      },
+      "empirical_observed_rate": {
+        "rate": 0.0003874467260751647,
+        "splits": {
+          "earlydev": {
+            "difference": -0.0005864777148859329,
+            "ci95": [
+              -0.001005404441836998,
+              -0.00028552944058372204
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          },
+          "calibration": {
+            "difference": -0.00016074715994104653,
+            "ci95": [
+              -0.00036039983243408034,
+              -2.107989829198984e-05
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      },
+      "training_interval_fitted": {
+        "rate": 0.0008299976023948257,
+        "splits": {
+          "earlydev": {
+            "difference": -0.0012333916082281982,
+            "ci95": [
+              -0.002131004474017088,
+              -0.0005877353323766478
+            ],
+            "games": 24,
+            "positions": 582,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 606,
+            "excluded_pairs": 24,
+            "left_nonfinite": 24,
+            "right_nonfinite": 24,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          },
+          "calibration": {
+            "difference": -0.0003394769254693565,
+            "ci95": [
+              -0.0007674980074014352,
+              -4.056923821746341e-05
+            ],
+            "games": 15,
+            "positions": 314,
+            "resamples": 10000,
+            "seed": 42,
+            "input_positions": 329,
+            "excluded_pairs": 15,
+            "left_nonfinite": 15,
+            "right_nonfinite": 15,
+            "population": "common_finite_pairs",
+            "whole_sample_difference_defined": false
+          }
+        }
+      }
+    }
+  },
+  "paired_games": {
+    "status": "completed",
+    "paired_units": 48,
+    "verified_legal_moves": [
+      3148,
+      3401
+    ],
+    "reference_exposure_rate": 0.23857868020304568,
+    "candidate_exposure_rate": 0.21759530791788856,
+    "candidate_minus_reference_exposure_rate": {
+      "difference": -0.02098337228515712,
+      "ci95": [
+        -0.047757860816643585,
+        0.005794831949353613
+      ],
+      "resamples": 10000,
+      "seed": 42,
+      "unit": "paired start/opponent/color/seed game"
+    },
+    "mean_clock_consumption_per_game": [
+      273.16973355188134,
+      278.51044222786646
+    ],
+    "clock_consumption_difference_ci95": [
+      -35.87786859200169,
+      48.49982973739241
+    ],
+    "reference_wall_seconds": 40.329543542000465,
+    "candidate_wall_seconds": 85.52283633296611,
+    "limits": [
+      "Mechanical moved-piece capture exposure, not engine-verified material loss or human noticeability.",
+      "Paired starts and RNG streams diverge into different trajectories; individual plies are not paired.",
+      "CPU batched throughput is not browser latency.",
+      "No human excess-error gap estimated; no deployment gate established."
+    ],
+    "source_sha256": {
+      "reports/imitation-v1/rollouts-reference/summary.json": "d080eb5f5d253c81a556cdb483e2b7de62b1f3146e88566ee42f76f65abd03ec",
+      "reports/imitation-v1/rollouts-reference/moves.jsonl": "cbbeebba7eb44381782df753e9479bd3bb04b5c66f04f8976c57a8343544fef9",
+      "reports/imitation-v1/rollouts-bce29/summary.json": "70430db35095806fb3fb00ba9bf51d897b7e50e9de2ee179ba5d2d4a38ca2a57",
+      "reports/imitation-v1/rollouts-bce29/moves.jsonl": "d11df85aa1b9036f6d1165963367da3c3a4ce2201810eb0331772c1719c032c4"
+    },
+    "test_evaluated": false
+  },
+  "browser": {
+    "measured_positions": 1000,
+    "warmup_positions": 50,
+    "load_ms": 754.7000000178814,
+    "latency_ms": {
+      "mean": 61.576200000017884,
+      "p50": 61.5,
+      "p95": 66,
+      "p99": 67.90000000596046,
+      "max": 71.2000000178814
+    },
+    "latency_exceeds_requested_duration": 8,
+    "black_positions": 526,
+    "near_flag_positions": 22,
+    "legal_and_feasible": true,
+    "phases": [
+      "downloading",
+      "initializing",
+      "ready"
+    ]
+  },
+  "experiment_snapshot": {
+    "sha256": "8638575488810020cef64e7216a22dbdbf079712a3c954aff2cb2241596d2d4b",
+    "bytes": 138523693,
+    "tests": {
+      "command": ".venv/bin/python -m pytest -q --disable-warnings",
+      "passed": 373,
+      "warnings": 25
+    },
+    "base_git_commit": "dbcf0645c191dd7bfd682a2ba528858a56d90214"
+  }
+}
