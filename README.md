@@ -1,29 +1,41 @@
-# Chess Self
+# Liemfish
 
-A personal move-and-clock imitation project based on Maia3-23M-ponder. It learns the moves you actually played, including preferences and mistakes, rather than trying to maximize engine strength.
+**A chess model trained to play like Liem, including the time spent thinking.**
 
-**Current milestone: completed personalization and three full-data timing experiments.** The selected E05 square-conditioned timing head is the leading development candidate (epoch 5). The original test set remains untouched. See [the next evaluation plan](docs/timing-review-followup.md) for scorecards, uncertainty, matched controls and runtime acceptance.
+Liemfish learns from my Chess.com and Lichess games: the moves I choose, the positions I hesitate over, and how I use the clock. It personalizes Maia3's move policy, then adds a timing model that conditions on the board, recent thinking times, and the move being played.
 
-**Lambda transfer package:** source, pinned weights and prepared splits can be bundled with checksums. Both timing rentals have been terminated. Remote scripts act only when explicitly invoked with an authorized endpoint. Existing transfer archives are snapshots; rebuild after changes. See [the Lambda quick start](docs/lambda-quickstart.md).
+The repository includes the training pipeline, game datasets, trained checkpoints, validation reports, and browser-ready ONNX exports. You can inspect the experiments or run the selected model locally.
 
-## Your data
+## Predicting a player
 
-Signed-in Chrome profiles confirmed **MonisVerse** (Chess.com) and **MonisChess** (Lichess). Public exports were saved locally on October 27, 2026. No browser cookies, credentials, or private messages were copied.
+A familiar opening can take a fraction of a second. A difficult capture can consume a large part of the remaining clock. Liemfish models a distribution of thinking times for each position and selected move, so repeated predictions can produce different durations.
 
-| Stage | Games | Your moves | Timing labels |
-|---|---:|---:|---:|
-| Downloaded | 875 | — | — |
-| Training | 598 | 15,185 | 14,598 |
-| Validation | 74 | 1,844 | 1,770 |
-| Untouched test | 76 | 1,708 | 1,632 |
+The selected timing model reads representations of the move's source and destination squares alongside clock, position, and recent timing features. It adjusts the personalized model's timing distribution while keeping its move policy frozen. At inference, the sampler restricts durations to the available clock budget.
 
-Preparation excludes 86 variant games, 10 unsupported time controls and 31 games with missing ratings. Fifteen moves lack usable pre-move clocks. The audit records two inconsistent clock deltas. Missing timing labels are masked; long thinks outside the published head's `[0, 99.9)` second range are not clamped into training labels.
+That separation makes the experiment inspectable: improvements in timing do not come from quietly changing which moves the model chooses. The [model contract](docs/timing-model-contract.md) describes the features and distributions; the [experiment guide](docs/timing-experiments.md) covers the alternatives.
 
-Whole games are sorted by UTC date (game hash breaks same-day ties), then split 80/10/10. Training currently ends November 3, 2024; validation extends to October 15, 2026. This measures adaptation across time, and your changing style can make the task harder. Evaluation reports results after move 10 and on positions unseen in training, as well as control and clock groups. Repeated openings are counted in `data/processed/audit.json`.
+## Measured results
 
-## Clone with weights and data
+Personalization raised first-choice agreement with Liem's recorded moves from **50.76% to 53.47%** on 1,844 validation positions. Top-three agreement reached 81.51%. These measure imitation of the recorded player, not chess strength. [Move results](reports/training-summary.json)
 
-This repository hosts the game exports, prepared splits and selected checkpoints using Git LFS. Install Git LFS before cloning:
+The selected square-conditioned timing head, E05 at epoch 5, reduced mean-time absolute error by **4.85%**, from 5.108 to 4.860 seconds. Its full-distribution score, CRPS, improved by 2.54%; lower CRPS means the predicted timing distribution fits the observed durations better. Evaluation covered 1,770 timed moves across 74 games, with comparisons resampled by whole game. [Timing results and uncertainty](reports/timing-full-evaluation-v1/RESULTS.md)
+
+These are development results on validation games used for model selection. The 76-game test set remains untouched. Clock-pressure behavior still needs work: the below-ten-second subgroup is small, and its improvement interval crosses zero.
+
+## Browser inference, verified
+
+The selected ONNX pair has run in Chrome through both WebGPU and WebAssembly. Both passed numerical parity checks for white-to-move, black-to-move, low-clock, and batch-two fixtures. WebGPU single-position warm medians were **23.0 to 23.6 ms** on the development Mac; WASM medians were 57.8 to 59.9 ms. These are fixture measurements, not a cross-device benchmark. [Browser reports](reports/timing-browser-selected/summary.json)
+
+The two models total **91.76 MB** before transfer compression:
+
+- [Personalized backbone and move policy](models/export/personalized-timing-features.onnx): 91.34 MB.
+- [Selected E05 timing head](models/export/e05-selected-epoch5.onnx): 0.42 MB.
+
+The browser folder contains a parity harness and a turn scheduler that accounts for inference time, cancels stale moves, and checks clock expiry before committing. A complete playable browser game is still an integration task. The native Python predictor already accepts a position and returns a legal sampled move with a target turn duration. See the [integration handoff](docs/portfolio-integration.md) for the exact inputs, outputs, and remaining browser adapter work.
+
+## Run it locally
+
+Install Git LFS, then clone the source, weights, and datasets:
 
 ```sh
 git lfs install
@@ -33,74 +45,45 @@ git lfs pull
 bash scripts/setup.sh
 ```
 
-See [the published artifact manifest](artifacts-manifest.json) for file sizes and SHA-256 hashes and [the portfolio integration handoff](docs/portfolio-integration.md) for the selected browser models and license notes. The source is AGPL-3.0; no separate upstream weight license was supplied in the model card. Game data retains its source provenance; the source-code license does not establish ownership of third-party data. Caches, environments, smoke weights and rental/account records are excluded.
+Setup restores the pinned Maia3 implementation and Python dependencies, verifies the base checkpoint, runs tests, and checks the dataset. It does not start training or rent a GPU. Python 3 with venv support is required to bootstrap setup; the project environment uses Python 3.12.
 
-## Use locally
+Run the personalized move predictor on the included example position:
 
-The prepared environment is `.venv`. Run from this directory:
+```sh
+.venv/bin/chess-self predict \
+  --position docs/example-position.json \
+  --checkpoint models/personalized/heads-01.pt
+```
+
+This CLI returns legal move probabilities and the personalized reference's timing distribution. To sample a move and duration with the selected E05 timing head, use [`TimingPredictor`](src/chess_self/timing_predict.py) with the [native inference example](docs/portfolio-integration.md#existing-native-requestresponse-contract). The example ratings and clocks are illustrative inputs, not an estimate of Liem's playing strength.
+
+Run the checks:
 
 ```sh
 .venv/bin/python -m pytest -q
-.venv/bin/chess-self doctor
-.venv/bin/chess-self --help
+node --test browser/*.test.mjs
 ```
 
-To rebuild a fresh environment, run `bash scripts/setup.sh` with Python 3 and venv support available. It bootstraps uv 0.13.6 if needed, verifies the bundle or upstream checkout and pretrained checksum, restores dependencies from `uv.lock`, runs tests, and checks the existing dataset. Linux explicitly uses PyTorch 2.13.0 + CUDA 12.6; macOS uses PyTorch 2.13.0 from PyPI. A code-only checkout needs its games fetched/prepared before the final doctor step can pass.
+The current suite passes 190 Python tests and 18 JavaScript tests. It covers clock reconstruction, game-level separation, move encoding, training updates, ONNX parity, and stale-turn cancellation.
 
-To acquire a new snapshot, use a **new directory**; the downloader intentionally preserves old snapshots:
+## The games behind the model
 
-```sh
-.venv/bin/chess-self fetch chess.com MonisVerse --output data/raw-new
-.venv/bin/chess-self fetch lichess MonisChess --output data/raw-new
-.venv/bin/chess-self prepare --pgn data/raw-new/*.pgn --players MonisVerse MonisChess --output data/processed-new
-```
+The dataset starts with 875 public game exports from **MonisVerse** on Chess.com and **MonisChess** on Lichess. Filtering leaves 748 usable games, split chronologically into 598 training, 74 validation, and 76 reserved test games. Training contains 15,185 player moves and 14,598 usable timing labels. [Preparation audit](data/processed/audit.json)
 
-The fetch manifests record URLs, download dates, game counts and SHA-256 hashes. Preparation labels only these accounts' turns. It keeps all preceding moves as context, both actual ratings and real clock settings. `%clk` values are post-move; elapsed time uses the same player's previous clock plus increment minus the current reading. First-move timing is excluded because platform conventions differ. Missing clocks are never forward-filled.
+Whole games stay in one split. Clock reconstruction accounts for increments and missing observations; missing times remain missing. Post-move clocks and elapsed time are labels, never input features for the current prediction. Training ends in November 2024, so this checkpoint represents historical play.
 
-## GPU handoff
+[Raw exports](data/raw), [prepared splits](data/processed), and [timing features](data/timing-v2) are included through Git LFS where appropriate. The [artifact manifest](artifacts-manifest.json) records sizes and SHA-256 hashes. It was verified against a fresh GitHub clone after publication.
 
-See [docs/gpu-handoff.md](docs/gpu-handoff.md). Start with an NVIDIA CUDA machine; the supplied brief's 16 GB card is a reasonable initial target, but memory use and throughput must be measured on it. No machine has been provisioned and no paid resources have been started.
+## Reproduce or extend the experiments
 
-```sh
-bash scripts/train-gpu.sh models/runs/heads-01
-```
+The [timing experiment guide](docs/timing-experiments.md) covers feature ablations, distribution alternatives, calibration, and evaluation. E03 position, E04 recent timing history, and E05 selected-square experiments have completed full-data runs. Additional configurations are experimental options, not claims of completed training.
 
-The initial run freezes the backbone and trains the move and timing heads at `1e-5`, batch 16, up to eight epochs, with early stopping after two validation checks without improvement. Timing cross-entropy has weight 0.2. These are experimental defaults, not validated hyperparameters. Model selection uses validation move log loss; the unchanged checkpoint remains eligible. Inspect timing metrics too before accepting a model. `--final-blocks 1` enables a separate experiment on the last block, with a fresh output directory.
+Start with the [review follow-up](docs/timing-review-followup.md) for the prepared matched control and outstanding acceptance checks. Use fresh output directories and preserve the reserved test set until final evaluation.
 
-`best.pt` is a complete checkpoint and `run.json` records hashes, settings, baseline, every epoch, selected epoch, and successful/skipped optimizer updates. An epoch-zero selection means the unchanged model won. CPU `--smoke` runs are explicitly marked smoke-only and must not be used as personal models. Test data is not read for training or selection (only its file hash is recorded).
+For a new training run, the [GPU handoff](docs/gpu-handoff.md) and [Lambda runbook](docs/lambda-quickstart.md) document setup, checkpoint collection, and detached jobs. Remote scripts act only when explicitly invoked.
 
-The log prints progress every 50 batches and an estimate to the next validation pass. Epoch durations and throughput are recorded in `run.json`; checkpoints and reports use atomic file replacement. The detached launcher survives an SSH disconnect, but cannot survive termination of the cloud instance. Completed epochs retain the best checkpoint; restarting optimizer state is not implemented.
+## Credits and license
 
-After choosing an experiment using validation, compare baseline and personal model on the same untouched test set once:
+Liemfish builds on [Maia3's timing implementation](https://github.com/daniel-monroe/maia3/tree/95c0985aacb62bcaeedc30c3a9bbddfb43f91dd0) and the [Maia3-23M-ponder checkpoint](https://huggingface.co/UofTCSSLab/Maia3-23M-ponder). Setup pins the implementation revision and verifies the checkpoint hash. Chess rules and PGN parsing use [python-chess](https://python-chess.readthedocs.io/).
 
-```sh
-.venv/bin/chess-self evaluate --checkpoint models/maia3-23m-ponder.pt --positions data/processed/test.jsonl --output reports/test-baseline.json --device cuda
-.venv/bin/chess-self evaluate --checkpoint models/runs/heads-01/best.pt --positions data/processed/test.jsonl --output reports/test-personal.json --device cuda
-.venv/bin/chess-self export --checkpoint models/runs/heads-01/best.pt --output models/export/personal.onnx
-```
-
-Top-1/top-3 agreement and move log loss measure imitation. Timing reports include mean, median and 90th-percentile absolute error, and comparison against medians calculated only from training data. A good aggregate result does not establish performance in sparse controls. This initial version does not rebalance controls or change the timing head's range.
-
-## Prediction and browser export
-
-`chess-self predict --position path/to/position.json --checkpoint path/to/best.pt` returns legal move probabilities and a position-level timing distribution. A position JSON uses the schema in `docs/browser-contract.md`; prepared JSONL rows can be extracted as examples. Predictions reflect the selected checkpoint, not automatically a trained version of you.
-
-`docs/example-position.json` is a generic starting-position example with illustrative ratings and clocks. Try `.venv/bin/chess-self predict --position docs/example-position.json`.
-
-The pretrained export is `models/export/maia3-23m-ponder.onnx`, with its ordered move vocabulary and parity report alongside it. [The browser contract](docs/browser-contract.md) describes history order, orientation, clocks, ratings, move indices and timing outputs. **ONNX Runtime CPU parity is verified; WebAssembly/WebGPU execution and browser latency are not.** A browser worker, model cache and chess UI remain the next product milestone after a useful model is selected.
-
-## Project contents and provenance
-
-- `src/chess_self/`: fetching, data preparation, model adapter, training/evaluation, export and CLI.
-- `tests/`: clock accounting, leakage prevention, move encoding, parameter updates, fetch behavior and export checks.
-- `docs/`: original background document, browser contract and GPU runbook.
-- `data/`, `models/`, `reports/`: local artifacts, excluded from Git.
-- `sources/maia3/`: unmodified author implementation at `95c0985aacb62bcaeedc30c3a9bbddfb43f91dd0`.
-
-The checkpoint is pinned to Hugging Face revision `34ec2be9d651102e4ad0e9eda3d838acd69f5f9a`, SHA-256 `0ac9fb74256f9be7d74808404364b90130c4d193f999c45b01e9b5ef64281bd1`. It is loaded strictly with PyTorch `weights_only=True`. The original implementation's AGPL-3.0 license is preserved in `LICENSE`; no model-card license was supplied for the timing weights.
-
-Sources: [author timing implementation](https://github.com/daniel-monroe/maia3/tree/95c0985aacb62bcaeedc30c3a9bbddfb43f91dd0), [ponder checkpoint](https://huggingface.co/UofTCSSLab/Maia3-23M-ponder), [python-chess clocks](https://python-chess.readthedocs.io/en/latest/pgn.html), [Chess.com export API](https://www.chess.com/news/view/published-data-api), [Lichess export API](https://lichess.org/api#tag/Games/operation/apiGamesUser).
-
-## Timing experiment suite
-
-The E01–E15 runner, configurations, input requirements, acceptance checks and GPU commands are documented in [docs/timing-experiments.md](docs/timing-experiments.md). Start with `python -m chess_self.experiments --help`. The completed personalized reference is `models/personalized/heads-01.pt`; new timing experiments preserve the original benchmark and reserved test games.
+The source is licensed under [AGPL-3.0](LICENSE), reflecting its use of Maia3 code. The upstream timing weights did not supply a separate model-card license; the code license alone does not establish weight or third-party game-data redistribution terms. Source provenance is retained with the published artifacts.
