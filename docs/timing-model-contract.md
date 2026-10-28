@@ -1,6 +1,6 @@
 # Timing side-head contract, version 1
 
-`timing_model.py` adds models without changing the original `PersonalModel`, encoder, checkpoint loader, move vocabulary, or board-history orientation.
+`timing_model.py` implements timing heads over the representations produced by `PersonalModel`.
 
 ## Representations and training boundaries
 

@@ -1,6 +1,6 @@
 # Timing playback and execution (E01 / E15)
 
-`src/chess_self/timing_runtime.py` and `browser/timing-runtime.mjs` supply clock bookkeeping and execution instrumentation. They do not provide a browser chess UI or claim WASM/WebGPU model parity. Node tests exercise the browser-compatible state machine with a fake monotonic clock; actual browser inference latency remains a separate deployment measurement.
+`src/chess_self/timing_runtime.py` and `browser/timing-runtime.mjs` supply clock bookkeeping and execution instrumentation. Use the [browser package](../packages/browser/README.md) for model inference and this module for replay and scheduler experiments.
 
 ## Prediction adapter
 

@@ -12,7 +12,7 @@ A familiar opening can take a fraction of a second. A difficult capture can cons
 
 The selected timing model reads representations of the move's source and destination squares alongside clock, position, and recent timing features. It adjusts the personalized model's timing distribution while keeping its move policy frozen. At inference, the sampler restricts durations to the available clock budget.
 
-That separation makes the experiment inspectable: improvements in timing do not come from quietly changing which moves the model chooses. The [model contract](docs/timing-model-contract.md) describes the features and distributions; the [experiment guide](docs/timing-experiments.md) covers the alternatives.
+The timing experiments compare duration predictions under the same move policy. The [model contract](docs/timing-model-contract.md) describes the features and distributions; the [experiment guide](docs/timing-experiments.md) covers the alternatives.
 
 ## Measured results
 
@@ -31,7 +31,13 @@ The two models total **91.76 MB** before transfer compression:
 - [Personalized backbone and move policy](models/export/personalized-timing-features.onnx): 91.34 MB.
 - [Selected E05 timing head](models/export/e05-selected-epoch5.onnx): 0.42 MB.
 
-The browser folder contains a parity harness and a turn scheduler that accounts for inference time, cancels stale moves, and checks clock expiry before committing. A complete playable browser game is still an integration task. The native Python predictor already accepts a position and returns a legal sampled move with a target turn duration. See the [integration handoff](docs/portfolio-integration.md) for the exact inputs, outputs, and remaining browser adapter work.
+Use [@epicliem/liemfish-browser](packages/browser/README.md) to load the models in a Web Worker and predict a legal move with a sampled thinking time. The package provides TypeScript types, load progress, cancellation, and verified asset preparation. Its default runtime is WebAssembly; the separate parity harness also supports WebGPU.
+
+```sh
+npm install --save-exact @epicliem/liemfish-browser@0.1.1
+```
+
+See the [inference guide](docs/inference.md) for the selected artifacts and native Python API.
 
 ## Run it locally
 
@@ -45,7 +51,7 @@ git lfs pull
 bash scripts/setup.sh
 ```
 
-Setup restores the pinned Maia3 implementation and Python dependencies, verifies the base checkpoint, runs tests, and checks the dataset. It does not start training or rent a GPU. Python 3 with venv support is required to bootstrap setup; the project environment uses Python 3.12.
+Setup restores the pinned Maia3 implementation and Python dependencies, verifies the base checkpoint, runs tests, and checks the dataset. Python 3 with venv support is required to bootstrap setup; the project environment uses Python 3.12.
 
 Run the personalized move predictor on the included example position:
 
@@ -55,7 +61,7 @@ Run the personalized move predictor on the included example position:
   --checkpoint models/personalized/heads-01.pt
 ```
 
-This CLI returns legal move probabilities and the personalized reference's timing distribution. To sample a move and duration with the selected E05 timing head, use [`TimingPredictor`](src/chess_self/timing_predict.py) with the [native inference example](docs/portfolio-integration.md#existing-native-requestresponse-contract). The example ratings and clocks are illustrative inputs, not an estimate of Liem's playing strength.
+This CLI returns legal move probabilities and the personalized reference's timing distribution. To sample a move and duration with the selected E05 timing head, use [`TimingPredictor`](src/chess_self/timing_predict.py) with the [native inference example](docs/inference.md#native-python-api). The example ratings and clocks are illustrative inputs, not an estimate of Liem's playing strength.
 
 Run the checks:
 
@@ -64,7 +70,7 @@ Run the checks:
 node --test browser/*.test.mjs
 ```
 
-The current suite passes 190 Python tests and 18 JavaScript tests. It covers clock reconstruction, game-level separation, move encoding, training updates, ONNX parity, and stale-turn cancellation.
+The tests cover clock reconstruction, game-level separation, move encoding, training updates, ONNX parity, and stale-turn cancellation.
 
 ## The games behind the model
 
@@ -72,15 +78,15 @@ The dataset starts with 875 public game exports from **MonisVerse** on Chess.com
 
 Whole games stay in one split. Clock reconstruction accounts for increments and missing observations; missing times remain missing. Post-move clocks and elapsed time are labels, never input features for the current prediction. Training ends in November 2024, so this checkpoint represents historical play.
 
-[Raw exports](data/raw), [prepared splits](data/processed), and [timing features](data/timing-v2) are included through Git LFS where appropriate. The [artifact manifest](artifacts-manifest.json) records sizes and SHA-256 hashes. It was verified against a fresh GitHub clone after publication.
+[Raw exports](data/raw), [prepared splits](data/processed), and [timing features](data/timing-v2) are included through Git LFS where appropriate. The [artifact manifest](artifacts-manifest.json) records sizes and SHA-256 hashes.
 
 ## Reproduce or extend the experiments
 
-The [timing experiment guide](docs/timing-experiments.md) covers feature ablations, distribution alternatives, calibration, and evaluation. E03 position, E04 recent timing history, and E05 selected-square experiments have completed full-data runs. Additional configurations are experimental options, not claims of completed training.
+The [timing experiment guide](docs/timing-experiments.md) covers feature ablations, distribution alternatives, calibration, and evaluation. E03 position, E04 recent timing history, and E05 selected-square experiments have completed full-data runs. The guide lists the available configurations and their input requirements.
 
-Start with the [review follow-up](docs/timing-review-followup.md) for the prepared matched control and outstanding acceptance checks. Use fresh output directories and preserve the reserved test set until final evaluation.
+Use fresh output directories and preserve the reserved test set until final evaluation.
 
-For a new training run, the [GPU handoff](docs/gpu-handoff.md) and [Lambda runbook](docs/lambda-quickstart.md) document setup, checkpoint collection, and detached jobs. Remote scripts act only when explicitly invoked.
+For a new training run, the [training guide](docs/training.md) and [Lambda runbook](docs/lambda-quickstart.md) document setup, checkpoint collection, and detached jobs.
 
 ## Credits and license
 

@@ -6,6 +6,6 @@
 - `sources/maia3` is an unmodified upstream checkout pinned to 95c0985aacb62bcaeedc30c3a9bbddfb43f91dd0. Preserve its history orientation and move vocabulary.
 - The user authorized publication of game datasets and trained weights. Data and selected weights use Git LFS; rental metadata, credentials, caches and unselected reports remain ignored. Preserve the published artifact allowlist.
 - Keep game-level holdouts intact; never use test data for training decisions. Elapsed and post-move clock values are labels, never model features.
-- This project's current milestone is GPU training readiness. CPU smoke artifacts are not personalized models. Report browser parity separately from native ONNX parity.
+- The browser engine package is in `packages/browser`; run `npm run build`, `npm test`, and `npm run test:package` there. Keep native ONNX parity and browser runtime verification distinct.
 - `python3 scripts/bundle.py` builds the allowlisted transfer archive; verify it after extraction. Rebuild after source/data edits. Linux torch uses the explicit CUDA 12.6 index in the lock.
 - `scripts/remote.py` is opt-in SSH deployment/collection; never invoke it without an authorized endpoint. `scripts/jobs.py start NAME --mode full` runs detached setup, GPU preflight and training. Inspect `jobs/NAME/status.json` and `output.log`.

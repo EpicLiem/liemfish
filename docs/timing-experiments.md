@@ -1,14 +1,14 @@
 # Timing experiment runner
 
-For the completed E03/E04/E05 runs and prepared next checks, see [the review follow-up](timing-review-followup.md).
+Selected model results are in the [validation report](../reports/timing-full-evaluation-v1/RESULTS.md).
 
 The reference is `models/personalized/heads-01.pt` (SHA-256 `8758ea33f911233b28c2c134192a3f127b5c7669e22c08178417e41393c40427`). It remains unchanged. New experiments write fresh output directories. The original benchmark and its reserved test games remain intact.
 
-Run from the project root using `.venv/bin/python -m chess_self.experiments`. `chess-self timing ...` is also available. No command rents a machine or launches a remote job.
+Run from the project root using `.venv/bin/python -m chess_self.experiments`. `chess-self timing ...` is also available.
 
 ## Prepare once
 
-The enriched dataset is already available locally at `data/timing-v2`. To reproduce into a new location:
+The enriched dataset is available at `data/timing-v2`. To reproduce into a new location:
 
 ```bash
 .venv/bin/python -m chess_self.experiments prepare --pgn data/raw/*.pgn --players MonisVerse MonisChess --reference data/processed --output data/timing-v2-new
@@ -53,7 +53,6 @@ Each run saves `initial.pt`, `last.pt`, `run.json`, and **only if accepted** `be
 | E14 | `events`, then `playback --event ...` | Separate binary timeout-event model. Requires verified completed/timeout turn records, including pre-turn state. Ambiguous endings are excluded; timeout records must not have invented exact duration labels. |
 | E15 | `playback` recorded replay / virtual games; `export-backbone`, `export`, `browser-fixtures`; browser harness | Generated moves, clocks and histories feed back into native virtual games. Actual browser parity/latency is a separate measured run. |
 
-The brief's conditional later extensions (fast/Beta mixtures, session latent state, prototypes, per-control models, LoRA and engine distillation) are not silently enabled. The listed arms implement the stated first comparisons; their results determine whether those extensions are warranted.
 
 ## Evaluate and compare
 
@@ -124,11 +123,9 @@ bash scripts/setup.sh
 node --test browser/timing-runtime.test.mjs
 ```
 
-The timing bundle adds configurations, browser tools, schema-v2 data and the personalized reference to the existing portable source bundle. Cached features are regenerated on the destination. Existing all-inclusive archives are older snapshots and are not silently replaced.
+The timing bundle adds configurations, browser tools, schema-v2 data and the personalized reference to the existing portable source bundle. Cached features are regenerated on the destination.
 
-## Implementation verification
-
-Development smoke artifacts live in `reports/timing-smoke/`. These use two training games and two validation games to exercise paths, not to estimate improvement. The frozen-feature arms and one-final-block adaptation were run on CPU. Side-head and backbone exports have native CPU ONNX parity reports; browser fixtures were checked against both exported sessions. Actual browser backend checks are performed by the local harness, not inferred from native results.
+## Feature requirements
 
 To inspect a schema-dependent head in replay, pass rows containing the matching familiarity/retrieval/engine features. Prediction rejects missing required feature groups. Native virtual games support the basic clock/history/move heads directly; richer heads require a causal feature provider instead of substituting zeros. Policy entropy, gap and reconstructable previous-opponent surprisal are computed from the model; unknown prior clocks produce an explicit missing-surprisal mask.
 

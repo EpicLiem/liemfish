@@ -39,8 +39,6 @@ For the current black-to-move position, mirror ranks of each vocabulary UCI move
 
 Timing bin i has center `10**(-1 + (i + 0.5)*0.1) - 0.1` seconds, i=0…29. Boundaries are `10**(-1 + i*0.1) - 0.1`; training coverage is [0,99.9) seconds. The report includes the actual FP32 centers. The expectation is the sum of each probability times its center. This is a **position-level** timing distribution conditioned on history, clocks, and ratings. It is not a duration conditioned on a selected candidate move, a guaranteed response delay, or an engine search budget. Do not change it when a different move is sampled or imply that it models arbitrarily long thinks.
 
-## Future browser worker integration
+## Browser runtime
 
-A future Web Worker can load the ONNX asset with ONNX Runtime Web, build named float32 tensors, run the session, and return the four outputs with a request/position identifier. Keep session loading and inference off the main thread, discard stale results after a position changes, and surface load/inference errors. Cache assets by the recorded ONNX hash. Transfer typed-array buffers when useful; retain the actual history and full legal board state in the caller. Prefer WASM as an initial compatibility target and verify any chosen WebGPU execution path separately.
-
-This implementation provides no browser UI or worker. CPU ONNX Runtime parity does not establish browser WASM/WebGPU compatibility or performance. The saved verification suite covers white and black, promotions for both colors, short and full actual histories, low clocks, and batches of 1 and 2, comparing all four outputs with `atol=2e-4, rtol=2e-4`. It records maximum and mean absolute errors for every case/output.
+The [browser package](../packages/browser/README.md) implements position encoding, legal move sampling, and inference in a module worker. It pairs the personalized backbone with the selected E05 timing head. See the [inference guide](inference.md) for artifact paths and the [timing model contract](timing-model-contract.md) for the side-head interface.

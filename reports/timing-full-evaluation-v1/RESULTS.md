@@ -1,6 +1,6 @@
 # Full validation and selected E05 browser checks
 
-Completed locally on October 27, 2026. No GPU rental or fitting. Reserved test examples were not evaluated.
+Validation evaluation dated October 27, 2026. Reserved test examples were not evaluated.
 
 ## Validation
 
@@ -31,13 +31,11 @@ Headless Google Chrome 156.0.8078.48 ran the existing browser harness with the s
 - WebGPU warm medians: 23.0–23.6 ms; batch two: 23.0 ms.
 - Local scheduler: one dummy commit at 1.0013 seconds (WASM), 1.0009 seconds (WebGPU), against a one-second target.
 
-Reports: ../timing-browser-selected/wasm.json and webgpu.json. The test browser and localhost server were closed afterward. Measurements are from this Mac and fixture workload; per-operator GPU placement and full live gameplay are not certified. The scheduler fixture uses a supplied legal move and target, not an end-to-end model-generated game.
+Reports: ../timing-browser-selected/wasm.json and webgpu.json. Measurements are from this Mac and fixture workload; per-operator GPU placement and full live gameplay are not certified. The scheduler fixture uses a supplied legal move and target, not an end-to-end model-generated game.
 
-## Interpretation and next decision
+## Reproduction
 
-E05 remains the leading development candidate and its exports now have actual browser parity evidence. The next useful training comparison is the prepared same-budget pooled-only residual refit, followed by repeat seeds if needed. It is still untrained. Full generated-game behavior, prospective data and final untouched-test acceptance remain separate work. No new experiment is justified solely by these tests passing.
 
-Reproduction:
 
 ```bash
 python3 scripts/evaluate_selected_timing.py --run --output reports/NEW_FRESH_OUTPUT

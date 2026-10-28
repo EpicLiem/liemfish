@@ -1,15 +1,13 @@
-# Lambda quick start
-
-The transfer package is ready locally. No Lambda account changes, rental, upload or remote training have been performed. When the instance is running, provide its SSH connection command and the path to the existing key on this Mac. Do not paste private-key contents or an API token.
+# Remote training on Lambda
 
 Use a single A100 instance with Lambda's normal Ubuntu image. This project installs its own isolated Python 3.12 environment and a pinned CUDA 12.6 PyTorch build. The image must have a working NVIDIA driver, `python3`, venv support and SSH access. GPU compatibility and throughput are checked on the actual machine.
 
-## One command from this Mac
+## Deploy a training job
 
 After the instance's SSH host key has been verified and the selected local key can connect:
 
 ```sh
-cd /Users/liem/random/chess-self
+cd liemfish
 python3 scripts/remote.py deploy --host ubuntu@INSTANCE_IP --identity /absolute/path/to/existing-key --train
 ```
 
@@ -38,7 +36,7 @@ python3 scripts/remote.py status --host ubuntu@INSTANCE_IP --identity /absolute/
 python3 scripts/remote.py collect --host ubuntu@INSTANCE_IP --identity /absolute/path/to/existing-key
 ```
 
-Pass the same `--deployment` and `--job` if changed. For setup-only status, use `--job setup-heads-01`. Status prints the job state and last 40 log lines. Collection downloads saved runs, reports and job logs under `reports/collected/DEPLOYMENT/` on this Mac. Collect after completion and confirm the files before terminating the instance. The scripts do not terminate the instance or stop rental billing.
+Pass the same `--deployment` and `--job` if changed. For setup-only status, use `--job setup-heads-01`. Status prints the job state and last 40 log lines. Collection downloads saved runs, reports and job logs under `reports/collected/DEPLOYMENT/` locally. Collect after completion and confirm the files before terminating the instance. The scripts do not terminate the instance or stop rental billing.
 
 The main outputs are `models/runs/heads-01/best.pt` and `run.json`. GPU preflight evidence is in `reports/gpu-preflight-heads-01/`; job output is `jobs/heads-01/output.log`. The baseline remains the winner unless personalization improves validation move NLL. A run that selects epoch zero is not a successful personalization result.
 
@@ -64,8 +62,7 @@ python3 scripts/bundle.py
 .venv/bin/python -m pytest -q
 ```
 
-The bundle contains approximately 109 MB of pretrained weights plus source and games before compression. It excludes the Mac virtual environment, SSH credentials, caches, previous training runs and ONNX exports. Dependencies are fetched from the pinned lock on the instance. Allow setup time for the CUDA packages; this is separate from training throughput.
+The bundle contains approximately 109 MB of pretrained weights plus source and games before compression. It excludes the local virtual environment, SSH credentials, caches, previous training runs and ONNX exports. Dependencies are fetched from the pinned lock on the instance. Allow setup time for the CUDA packages; this is separate from training throughput.
 
-CPU smoke tests, detached launch, data integrity and PyTorch/ONNX parity have been exercised locally. CUDA execution, remote transfer and actual A100 timing remain unverified until an instance is available.
 
 References: [Lambda connections](https://docs.lambda.ai/public-cloud/on-demand/connecting-to-an-instance/), [official PyTorch CUDA builds](https://pytorch.org/get-started/previous-versions/).
