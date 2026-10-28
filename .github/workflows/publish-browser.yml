@@ -48,7 +48,7 @@ jobs:
       - name: Pack verified release
         run: npm pack --ignore-scripts
       - name: Check publication contents
-        run: npm publish epicliem-liemfish-browser-*.tgz --dry-run --ignore-scripts --access public
+        run: npm pack --dry-run --ignore-scripts
       - name: Publish through npm trusted publisher
         if: github.event_name == 'push'
         run: npm publish epicliem-liemfish-browser-*.tgz --ignore-scripts --access public
