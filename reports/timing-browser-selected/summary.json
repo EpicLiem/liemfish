@@ -1,0 +1,38 @@
+{
+  "scope": "Actual headless Chrome parity page; selected full-data E05 epoch 5; no live chess moves",
+  "operator_placement_verified": false,
+  "providers": {
+    "wasm": {
+      "status": "parity_passed",
+      "browser_version": "156.0.8078.48",
+      "case_count": 4,
+      "warm_median_ms": {
+        "white": 59.900000005960464,
+        "black": 57.79999998211861,
+        "low-clock": 58,
+        "batch-two": 109.5
+      },
+      "scheduler_status": "committed",
+      "visible_delay_seconds": 1.0012999999821188,
+      "session_load_ms": 828.4000000059605,
+      "max_cold_absolute_error": 6.914138793945312e-05,
+      "file_hashes_verified": true
+    },
+    "webgpu": {
+      "status": "parity_passed",
+      "browser_version": "156.0.8078.48",
+      "case_count": 4,
+      "warm_median_ms": {
+        "white": 23.600000023841858,
+        "black": 23.19999998807907,
+        "low-clock": 23,
+        "batch-two": 23
+      },
+      "scheduler_status": "committed",
+      "visible_delay_seconds": 1.0009000000059602,
+      "session_load_ms": 774.4000000059605,
+      "max_cold_absolute_error": 5.7220458984375e-05,
+      "file_hashes_verified": true
+    }
+  }
+}

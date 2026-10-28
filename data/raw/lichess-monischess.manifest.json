@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "platform": "lichess",
+  "username": "MonisChess",
+  "created_at": "2026-10-27T15:08:00.930586+00:00",
+  "files": [
+    {
+      "file": "lichess-monischess-all.pgn",
+      "url": "https://lichess.org/api/games/user/MonisChess?clocks=true&evals=false&opening=false&sort=dateAsc",
+      "params": {
+        "clocks": "true",
+        "evals": "false",
+        "opening": "false",
+        "sort": "dateAsc"
+      },
+      "fetched_at": "2026-10-27T15:08:07.134397+00:00",
+      "sha256": "d0de7d723b860843ad9cd88f6272f425c0225b350ada130533bbf5ba4ff35720",
+      "bytes": 235959,
+      "http_date": "Tue, 27 Oct 2026 15:08:01 GMT",
+      "last_modified": null,
+      "etag": null,
+      "games": 141,
+      "games_with_clocks": 136,
+      "games_with_evals": 0,
+      "first_game_date": "2022.12.19",
+      "last_game_date": "2024.03.01"
+    }
+  ],
+  "resume_policy": "Existing exports are immutable snapshots; use a new output directory to refresh.",
+  "last_attempt_at": "2026-10-27T15:09:09.425738+00:00",
+  "failures": [],
+  "complete": true,
+  "total_games": 141,
+  "completed_at": "2026-10-27T15:09:09.426182+00:00"
+}

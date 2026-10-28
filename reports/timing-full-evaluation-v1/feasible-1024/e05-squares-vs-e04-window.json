@@ -1,0 +1,56 @@
+{
+  "crps_seconds": {
+    "difference": -0.034141186470944614,
+    "ci95": [
+      -0.057644230418456587,
+      -0.013385784679258302
+    ],
+    "games": 74,
+    "positions": 1770,
+    "resamples": 2000,
+    "seed": 42,
+    "input_positions": 1844,
+    "excluded_pairs": 74,
+    "left_nonfinite": 74,
+    "right_nonfinite": 74,
+    "population": "common_finite_pairs",
+    "whole_sample_difference_defined": false
+  },
+  "mean_absolute_error": {
+    "difference": -0.06725177667957166,
+    "ci95": [
+      -0.10847352511658201,
+      -0.026069685687175582
+    ],
+    "games": 74,
+    "positions": 1770,
+    "resamples": 2000,
+    "seed": 42,
+    "input_positions": 1844,
+    "excluded_pairs": 74,
+    "left_nonfinite": 74,
+    "right_nonfinite": 74,
+    "population": "common_finite_pairs",
+    "whole_sample_difference_defined": false
+  },
+  "interval_nll": {
+    "difference": -0.008260587384082752,
+    "ci95": [
+      -0.018368843630532906,
+      0.001297543597949219
+    ],
+    "games": 74,
+    "positions": 1769,
+    "resamples": 2000,
+    "seed": 42,
+    "input_positions": 1844,
+    "excluded_pairs": 75,
+    "left_nonfinite": 75,
+    "right_nonfinite": 75,
+    "population": "common_finite_pairs",
+    "whole_sample_difference_defined": false,
+    "interpretation": "Difference and interval apply only to common finite interval-NLL pairs; not whole-sample NLL.",
+    "left_zero_probability_intervals": 1,
+    "right_zero_probability_intervals": 1
+  }
+}

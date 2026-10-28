@@ -1,0 +1,15 @@
+{
+  "features": [
+    "clock",
+    "phase",
+    "chess"
+  ],
+  "head": {
+    "history_mode": "gru"
+  },
+  "interval_labels": true,
+  "sampling": "natural",
+  "max_move_nll_regression": 0.0,
+  "max_group_crps_regression": 0.0,
+  "name": "e04-gru"
+}

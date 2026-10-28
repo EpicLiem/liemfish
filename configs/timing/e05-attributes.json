@@ -1,0 +1,16 @@
+{
+  "features": [
+    "clock",
+    "phase",
+    "chess",
+    "history_window"
+  ],
+  "head": {
+    "move_mode": "attributes"
+  },
+  "interval_labels": true,
+  "sampling": "natural",
+  "max_move_nll_regression": 0.0,
+  "max_group_crps_regression": 0.0,
+  "name": "e05-attributes"
+}

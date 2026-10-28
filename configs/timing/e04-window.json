@@ -1,0 +1,17 @@
+{
+  "features": [
+    "clock",
+    "phase",
+    "chess",
+    "history_window"
+  ],
+  "head": {
+    "output_family": "absolute",
+    "use_pooled": true
+  },
+  "interval_labels": true,
+  "sampling": "natural",
+  "max_move_nll_regression": 0.0,
+  "max_group_crps_regression": 0.0,
+  "name": "e04-window"
+}

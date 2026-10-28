@@ -1,0 +1,25 @@
+:root { font-family: system-ui, sans-serif; color: #202020; background: #fafafa; line-height: 1.5; }
+body { margin: 0; }
+main { max-width: 70rem; padding: 2rem; margin: auto; }
+h1 { font-size: 1.8rem; line-height: 1.2; }
+h2 { font-size: 1.25rem; margin-top: 2rem; }
+fieldset { border: 1px solid #b4b4b4; padding: 1rem; margin: 1.2rem 0; }
+legend { font-weight: 650; padding: 0 .4rem; }
+label { display: block; margin-top: .7rem; margin-bottom: .2rem; }
+input, select, button { font: inherit; max-width: 100%; box-sizing: border-box; }
+input[type=file] { width: 100%; }
+input[type=number], select { padding: .35rem; }
+button { border: 1px solid #555; border-radius: .2rem; padding: .45rem .9rem; background: white; color: #202020; cursor: pointer; }
+button[type=submit] { background: #153d63; color: white; border-color: #153d63; }
+button:disabled { opacity: .5; cursor: default; }
+.actions { display: flex; flex-wrap: wrap; gap: .7rem; }
+.checkbox { display: flex; gap: .5rem; align-items: baseline; }
+.detail { font-size: .9rem; color: #444; }
+.table-scroll { max-width: 100%; overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+th, td { border-bottom: 1px solid #ccc; padding: .6rem; text-align: left; white-space: nowrap; }
+th { background: #eee; }
+pre { overflow: auto; max-height: 28rem; background: #eee; padding: 1rem; font-size: .8rem; }
+:focus-visible { outline: 3px solid #0d609c; outline-offset: 3px; }
+#status { font-weight: 650; }
+@media(max-width: 40rem) { main { padding: 1rem; } }

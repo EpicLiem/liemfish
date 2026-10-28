@@ -2,7 +2,11 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 if [ -f BUNDLE-MANIFEST.json ]; then
-  python3 scripts/bundle.py --verify . --allow-runtime
+  verifier=scripts/bundle.py
+  if python3 -c 'import json,sys; sys.exit("models/personalized/heads-01.pt" not in json.load(open("BUNDLE-MANIFEST.json"))["files"])'; then
+    verifier=scripts/bundle_timing.py
+  fi
+  python3 "$verifier" --verify . --allow-runtime
 fi
 if ! command -v uv >/dev/null || ! uv --version | grep -q '^uv 0.13.6'; then
   python3 -m venv .bootstrap

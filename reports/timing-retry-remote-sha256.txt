@@ -1,0 +1,12 @@
+0903c579a56b7ec17de4d8a46698357645d045a738013c430bbc11a77a0e1325  models/runs/timing-01/e05-squares/last.pt
+eebfa5c5d0de2ce70397a223bb8eb3792284d7cf093b0233367f8d448b10da82  models/runs/timing-01/e05-squares/run.json
+e20df02d9567e2da78fce2602978a99ae5d207df2cf8bd628fb9ed46d3394653  models/runs/timing-01/e05-squares/best.pt
+bdde8db792acaefbbe47e5b8e1f5d266a78b64a73d57ac2052c13d75490436d8  models/runs/timing-01/e05-squares/initial.pt
+7e440e1f969190f2c7a5f48462ad8adc086d0ed9fb0aea5efa8dcbe7f6956f6c  models/runs/timing-01/e04-window/last.pt
+e5a303cd51d4eb81509b789aa43c23baf04b14136d321a27bd51c419e3d89336  models/runs/timing-01/e04-window/run.json
+5ba323814bfcf79be386cd9e60cb2810b2ded9a0ed759b3e3d6e78b55747b1b1  models/runs/timing-01/e04-window/best.pt
+67781fb3616442d6f777ce749907ca41e0e5e1421efcf152112b92c4eff8708b  models/runs/timing-01/e04-window/initial.pt
+3d96209f9a96e50e6125ba3575d08b6d6c8c8462e174445a40c267c9835adf47  models/runs/timing-01/e03-position/last.pt
+062d0654279a051bfbeb764c4812b51d34a87c5a1708fdaad987bd20cc56e997  models/runs/timing-01/e03-position/run.json
+8f8c25550533400ca9bb2e63f5d00eb1cb3587067145f54b73c549415e2ce818  models/runs/timing-01/e03-position/best.pt
+b1b4f62d24f3249e937f67a6bfbc8155e7346df5f175ad2dc3a5f702305d35fb  models/runs/timing-01/e03-position/initial.pt

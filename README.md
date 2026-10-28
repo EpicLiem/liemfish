@@ -2,9 +2,9 @@
 
 A personal move-and-clock imitation project based on Maia3-23M-ponder. It learns the moves you actually played, including preferences and mistakes, rather than trying to maximize engine strength.
 
-**Current milestone: ready for an initial GPU training experiment.** Games are downloaded and prepared. The real checkpoint loads, CPU forward/backward and checkpoint selection work, and the FP32 ONNX export matches PyTorch. No personal training run has been completed. The browser application comes after training and model selection.
+**Current milestone: completed personalization and three full-data timing experiments.** The selected E05 square-conditioned timing head is the leading development candidate (epoch 5). The original test set remains untouched. See [the next evaluation plan](docs/timing-review-followup.md) for scorecards, uncertainty, matched controls and runtime acceptance.
 
-**Lambda transfer package:** `bundles/chess-self-gpu.tar.gz` includes source, pinned pretrained weights, raw games and prepared splits, with a per-file checksum manifest. Follow [the Lambda quick start](docs/lambda-quickstart.md). `scripts/remote.py` uploads and starts the detached setup/training pipeline only when explicitly run with an instance endpoint. No instance has been rented or contacted.
+**Lambda transfer package:** source, pinned weights and prepared splits can be bundled with checksums. Both timing rentals have been terminated. Remote scripts act only when explicitly invoked with an authorized endpoint. Existing transfer archives are snapshots; rebuild after changes. See [the Lambda quick start](docs/lambda-quickstart.md).
 
 ## Your data
 
@@ -20,6 +20,20 @@ Signed-in Chrome profiles confirmed **MonisVerse** (Chess.com) and **MonisChess*
 Preparation excludes 86 variant games, 10 unsupported time controls and 31 games with missing ratings. Fifteen moves lack usable pre-move clocks. The audit records two inconsistent clock deltas. Missing timing labels are masked; long thinks outside the published head's `[0, 99.9)` second range are not clamped into training labels.
 
 Whole games are sorted by UTC date (game hash breaks same-day ties), then split 80/10/10. Training currently ends November 3, 2024; validation extends to October 15, 2026. This measures adaptation across time, and your changing style can make the task harder. Evaluation reports results after move 10 and on positions unseen in training, as well as control and clock groups. Repeated openings are counted in `data/processed/audit.json`.
+
+## Clone with weights and data
+
+This repository hosts the game exports, prepared splits and selected checkpoints using Git LFS. Install Git LFS before cloning:
+
+```sh
+git lfs install
+git clone https://github.com/EpicLiem/liemfish.git
+cd liemfish
+git lfs pull
+bash scripts/setup.sh
+```
+
+See [the published artifact manifest](artifacts-manifest.json) for file sizes and SHA-256 hashes and [the portfolio integration handoff](docs/portfolio-integration.md) for the selected browser models and license notes. The source is AGPL-3.0; no separate upstream weight license was supplied in the model card. Game data retains its source provenance; the source-code license does not establish ownership of third-party data. Caches, environments, smoke weights and rental/account records are excluded.
 
 ## Use locally
 
@@ -86,3 +100,7 @@ The pretrained export is `models/export/maia3-23m-ponder.onnx`, with its ordered
 The checkpoint is pinned to Hugging Face revision `34ec2be9d651102e4ad0e9eda3d838acd69f5f9a`, SHA-256 `0ac9fb74256f9be7d74808404364b90130c4d193f999c45b01e9b5ef64281bd1`. It is loaded strictly with PyTorch `weights_only=True`. The original implementation's AGPL-3.0 license is preserved in `LICENSE`; no model-card license was supplied for the timing weights.
 
 Sources: [author timing implementation](https://github.com/daniel-monroe/maia3/tree/95c0985aacb62bcaeedc30c3a9bbddfb43f91dd0), [ponder checkpoint](https://huggingface.co/UofTCSSLab/Maia3-23M-ponder), [python-chess clocks](https://python-chess.readthedocs.io/en/latest/pgn.html), [Chess.com export API](https://www.chess.com/news/view/published-data-api), [Lichess export API](https://lichess.org/api#tag/Games/operation/apiGamesUser).
+
+## Timing experiment suite
+
+The E01–E15 runner, configurations, input requirements, acceptance checks and GPU commands are documented in [docs/timing-experiments.md](docs/timing-experiments.md). Start with `python -m chess_self.experiments --help`. The completed personalized reference is `models/personalized/heads-01.pt`; new timing experiments preserve the original benchmark and reserved test games.

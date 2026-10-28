@@ -1,0 +1,126 @@
+{
+  "provider": "CPUExecutionProvider",
+  "browser_execution_verified": false,
+  "cases": [
+    {
+      "case": "white",
+      "output": "move_logits",
+      "passed": true,
+      "max_absolute_error": 4.57763671875e-05
+    },
+    {
+      "case": "white",
+      "output": "base_logits",
+      "passed": true,
+      "max_absolute_error": 7.62939453125e-06
+    },
+    {
+      "case": "white",
+      "output": "pooled",
+      "passed": true,
+      "max_absolute_error": 2.0563602447509766e-06
+    },
+    {
+      "case": "white",
+      "output": "squares",
+      "passed": true,
+      "max_absolute_error": 1.1920928955078125e-05
+    },
+    {
+      "case": "white",
+      "output": "timing_raw",
+      "passed": true,
+      "max_absolute_error": 7.62939453125e-06
+    },
+    {
+      "case": "black",
+      "output": "move_logits",
+      "passed": true,
+      "max_absolute_error": 4.57763671875e-05
+    },
+    {
+      "case": "black",
+      "output": "base_logits",
+      "passed": true,
+      "max_absolute_error": 5.91278076171875e-05
+    },
+    {
+      "case": "black",
+      "output": "pooled",
+      "passed": true,
+      "max_absolute_error": 3.637745976448059e-06
+    },
+    {
+      "case": "black",
+      "output": "squares",
+      "passed": true,
+      "max_absolute_error": 1.9252300262451172e-05
+    },
+    {
+      "case": "black",
+      "output": "timing_raw",
+      "passed": true,
+      "max_absolute_error": 5.91278076171875e-05
+    },
+    {
+      "case": "low-clock",
+      "output": "move_logits",
+      "passed": true,
+      "max_absolute_error": 6.580352783203125e-05
+    },
+    {
+      "case": "low-clock",
+      "output": "base_logits",
+      "passed": true,
+      "max_absolute_error": 5.7220458984375e-06
+    },
+    {
+      "case": "low-clock",
+      "output": "pooled",
+      "passed": true,
+      "max_absolute_error": 4.231929779052734e-06
+    },
+    {
+      "case": "low-clock",
+      "output": "squares",
+      "passed": true,
+      "max_absolute_error": 3.357231616973877e-05
+    },
+    {
+      "case": "low-clock",
+      "output": "timing_raw",
+      "passed": true,
+      "max_absolute_error": 5.7220458984375e-06
+    },
+    {
+      "case": "batch-two",
+      "output": "move_logits",
+      "passed": true,
+      "max_absolute_error": 5.054473876953125e-05
+    },
+    {
+      "case": "batch-two",
+      "output": "base_logits",
+      "passed": true,
+      "max_absolute_error": 5.14984130859375e-05
+    },
+    {
+      "case": "batch-two",
+      "output": "pooled",
+      "passed": true,
+      "max_absolute_error": 3.6954879760742188e-06
+    },
+    {
+      "case": "batch-two",
+      "output": "squares",
+      "passed": true,
+      "max_absolute_error": 1.5035271644592285e-05
+    },
+    {
+      "case": "batch-two",
+      "output": "timing_raw",
+      "passed": true,
+      "max_absolute_error": 5.14984130859375e-05
+    }
+  ]
+}

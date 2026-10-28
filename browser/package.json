@@ -1,0 +1,8 @@
+{
+  "name": "chess-self-browser-experiments",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test timing-runtime.test.mjs parity-core.test.mjs" },
+  "dependencies": { "onnxruntime-web": "1.31.1" }
+}

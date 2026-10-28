@@ -1,0 +1,416 @@
+{
+  "files": {
+    "data/processed/audit.json": {
+      "bytes": 59781,
+      "sha256": "8b81d45fe644d5058acf6f8b12f3b47104429820bd899fd6a110c98a961a8c1a"
+    },
+    "data/processed/test.jsonl": {
+      "bytes": 1504078,
+      "sha256": "23c759d7ec3a72051a499e16b1f2be8ecf782337b96cafb43aafc3f4fcf34c48"
+    },
+    "data/processed/train.jsonl": {
+      "bytes": 13169921,
+      "sha256": "dd00bfef13c63e457079ab0686c8247e2ed682a9428341c69a38eb4637f9298a"
+    },
+    "data/processed/val.jsonl": {
+      "bytes": 1622029,
+      "sha256": "96ff3ad9eeb7e2ef229b216b7bc37e5adb4bc9b1f7f071e206759f5f63cdbf8a"
+    },
+    "data/raw/chess.com-monisverse-2021-07.pgn": {
+      "bytes": 195466,
+      "sha256": "3a1272adb72a01e10b10b04020e41bac306f0767f2e7adc6385b3b6daef3311e"
+    },
+    "data/raw/chess.com-monisverse-2021-11.pgn": {
+      "bytes": 930,
+      "sha256": "c00339a311deb36623ec1d115a8d4046352f41826f3d316565e385f4936f12e0"
+    },
+    "data/raw/chess.com-monisverse-2022-02.pgn": {
+      "bytes": 6878,
+      "sha256": "f3175970ea87b9f8bb4a1655418d29f0085e720f0874bab870145c6c6ce9a86e"
+    },
+    "data/raw/chess.com-monisverse-2022-09.pgn": {
+      "bytes": 117937,
+      "sha256": "4a44e7330e944229d5f412aee82db3d79996bbdfa227cefdc5df95b06b784876"
+    },
+    "data/raw/chess.com-monisverse-2022-10.pgn": {
+      "bytes": 44204,
+      "sha256": "06ab69bc055c0d50da3d29f9a5fcb0871937a74ef788274fb56a73e65756eb7e"
+    },
+    "data/raw/chess.com-monisverse-2022-11.pgn": {
+      "bytes": 20401,
+      "sha256": "2334f55957049acfba2af515afe76f7bd60664a827fe44078c1dfd4bb68f79ae"
+    },
+    "data/raw/chess.com-monisverse-2022-12.pgn": {
+      "bytes": 28378,
+      "sha256": "5c7e5ea3dce43cd9df2a3c2daf9fbfda520b5e2da1309d0e176cd42500496e1a"
+    },
+    "data/raw/chess.com-monisverse-2023-01.pgn": {
+      "bytes": 160267,
+      "sha256": "69f1af1e8c8ccc89c43dd32121a0efbdd829723557c843e7cadb9e3ef4676624"
+    },
+    "data/raw/chess.com-monisverse-2023-02.pgn": {
+      "bytes": 231685,
+      "sha256": "5a8f6e63a77f6743303b89698d21487623813ef5b19f2039c8a7acd572ba47ff"
+    },
+    "data/raw/chess.com-monisverse-2023-03.pgn": {
+      "bytes": 155551,
+      "sha256": "1614dfc0bdab503ffa87db107f38589b966733baaadf7d0d98b13e22ccd740b1"
+    },
+    "data/raw/chess.com-monisverse-2023-04.pgn": {
+      "bytes": 21154,
+      "sha256": "ebc3284d968d94b2282a9bbe151e4de23cb5b94f80011985a01bfbe27df21214"
+    },
+    "data/raw/chess.com-monisverse-2023-12.pgn": {
+      "bytes": 2063,
+      "sha256": "21a31f293ff84b97360068588b676061ea282eac137b6875a82d925fe3ebac74"
+    },
+    "data/raw/chess.com-monisverse-2024-10.pgn": {
+      "bytes": 125839,
+      "sha256": "e758a6c9b599d5617b5e5d462c6b19b7a3710cbb227670408fb38c4924a6ece7"
+    },
+    "data/raw/chess.com-monisverse-2024-11.pgn": {
+      "bytes": 38575,
+      "sha256": "76e8158cbd477319af544a18d5fc32a4e1f3a1c43c032900df006a5ff4af185a"
+    },
+    "data/raw/chess.com-monisverse-2025-02.pgn": {
+      "bytes": 30048,
+      "sha256": "a24f349347e349d63b3c1364fd61e44fb3e441f8328ecc9493cf6d4892f2bea3"
+    },
+    "data/raw/chess.com-monisverse-2025-03.pgn": {
+      "bytes": 5599,
+      "sha256": "c52bc241c80d3eac631a89baae690c483999d7d49a55b496a532a8ad87ccbb08"
+    },
+    "data/raw/chess.com-monisverse-2025-11.pgn": {
+      "bytes": 6131,
+      "sha256": "77b67e3915909170387120416f8f0b60d0f8463874026f2d7c5ee4a2240f98b6"
+    },
+    "data/raw/chess.com-monisverse-2026-02.pgn": {
+      "bytes": 25064,
+      "sha256": "b50382c25866844d5f13c5bcc2bd5acc18abfcf10a329fe5c98cfcf9f720ad5d"
+    },
+    "data/raw/chess.com-monisverse-2026-03.pgn": {
+      "bytes": 1825,
+      "sha256": "3a63392f342e6424676ac552ad26d5c336cbedf9fd012b696480d15a25988fbb"
+    },
+    "data/raw/chess.com-monisverse-2026-04.pgn": {
+      "bytes": 16668,
+      "sha256": "3fc21d83c303838500e23af0cae6110d549fe2d9aa99d58a675c432fff901af0"
+    },
+    "data/raw/chess.com-monisverse-2026-05.pgn": {
+      "bytes": 4112,
+      "sha256": "3fc8ba12ce3fe98c2e9868e18cfa1a9408f1736fbe6b35b3db04089507446750"
+    },
+    "data/raw/chess.com-monisverse-2026-10.pgn": {
+      "bytes": 165466,
+      "sha256": "ea67ba6a19514bedbac97fc448758012ba28985ef56bfd73bee82f7424b69a70"
+    },
+    "data/raw/chess.com-monisverse-archives.json": {
+      "bytes": 1334,
+      "sha256": "c9d207c59abc762bdcb473fa46031a880766a3d2ae6aa1b542963a6963ae4175"
+    },
+    "data/raw/chess.com-monisverse.manifest.json": {
+      "bytes": 15222,
+      "sha256": "5539a7367a9e0de713c3bb1f6eb41e83cfcf0242e8d86c33d4849cac4c380c94"
+    },
+    "data/raw/lichess-monischess-all.pgn": {
+      "bytes": 235959,
+      "sha256": "d0de7d723b860843ad9cd88f6272f425c0225b350ada130533bbf5ba4ff35720"
+    },
+    "data/raw/lichess-monischess.manifest.json": {
+      "bytes": 1146,
+      "sha256": "7cb2ccbf647623260ef82591c4b4c22f5c5827850c8027be87a6417b6c08c8a8"
+    },
+    "data/timing-v2/audit.json": {
+      "bytes": 63294,
+      "sha256": "2480b9084b081e1c612210531548f3be7268b1161b56498a803cb2e626adecd2"
+    },
+    "data/timing-v2/manifest.json": {
+      "bytes": 63294,
+      "sha256": "2480b9084b081e1c612210531548f3be7268b1161b56498a803cb2e626adecd2"
+    },
+    "data/timing-v2/train.jsonl": {
+      "bytes": 36706240,
+      "sha256": "4120f6b1b290c0e1b68addcfa4ad8f10a231224690e97187e87a8cef4499fc0b"
+    },
+    "data/timing-v2/val.jsonl": {
+      "bytes": 4557681,
+      "sha256": "83092ac4ea046b18ea570c55d9d7ac01f7979b47eccd42989467dd8595b5322b"
+    },
+    "models/export/e05-selected-epoch5.json": {
+      "bytes": 3455,
+      "sha256": "d13f0f23298ebf34b286e72a8e005d94d5f60925990f35ed021bda3e5386076d"
+    },
+    "models/export/e05-selected-epoch5.onnx": {
+      "bytes": 418125,
+      "sha256": "85b5dc3ab33dfde62ca511ea0c5a4f9e8ca1ece0846fa2bc2a1aaadca56a1921"
+    },
+    "models/export/personalized-timing-features.json": {
+      "bytes": 9307,
+      "sha256": "d66c61f4080bc85393e68a2a00c18c0b6cc013c6789ade215df93ca79b90abb3"
+    },
+    "models/export/personalized-timing-features.moves.json": {
+      "bytes": 35073,
+      "sha256": "14666033909ecb35c34ef1e407bc20a3a1142441b440bf7d8d537782b4abb10c"
+    },
+    "models/export/personalized-timing-features.onnx": {
+      "bytes": 91339625,
+      "sha256": "8109a8d96e19e2d36de56018b8429b41a99c7c1adae6b8a4a2bdee1454cd6e7a"
+    },
+    "models/maia3-23m-ponder.pt": {
+      "bytes": 108644919,
+      "sha256": "0ac9fb74256f9be7d74808404364b90130c4d193f999c45b01e9b5ef64281bd1"
+    },
+    "models/personalized/heads-01.pt": {
+      "bytes": 108643175,
+      "sha256": "8758ea33f911233b28c2c134192a3f127b5c7669e22c08178417e41393c40427"
+    },
+    "reports/collected/chess-self-timing-retry/models-runs/timing-01/e03-position/best.pt": {
+      "bytes": 191069,
+      "sha256": "8f8c25550533400ca9bb2e63f5d00eb1cb3587067145f54b73c549415e2ce818"
+    },
+    "reports/collected/chess-self-timing-retry/models-runs/timing-01/e03-position/initial.pt": {
+      "bytes": 191291,
+      "sha256": "b1b4f62d24f3249e937f67a6bfbc8155e7346df5f175ad2dc3a5f702305d35fb"
+    },
+    "reports/collected/chess-self-timing-retry/models-runs/timing-01/e03-position/last.pt": {
+      "bytes": 191133,
+      "sha256": "3d96209f9a96e50e6125ba3575d08b6d6c8c8462e174445a40c267c9835adf47"
+    },
+    "reports/collected/chess-self-timing-retry/models-runs/timing-01/e03-position/run.json": {
+      "bytes": 152495,
+      "sha256": "062d0654279a051bfbeb764c4812b51d34a87c5a1708fdaad987bd20cc56e997"
+    },
+    "reports/collected/chess-self-timing-retry/models-runs/timing-01/e04-window/best.pt": {
+      "bytes": 200605,
+      "sha256": "5ba323814bfcf79be386cd9e60cb2810b2ded9a0ed759b3e3d6e78b55747b1b1"
+    },
+    "reports/collected/chess-self-timing-retry/models-runs/timing-01/e04-window/initial.pt": {
+      "bytes": 200827,
+      "sha256": "67781fb3616442d6f777ce749907ca41e0e5e1421efcf152112b92c4eff8708b"
+    },
+    "reports/collected/chess-self-timing-retry/models-runs/timing-01/e04-window/last.pt": {
+      "bytes": 200605,
+      "sha256": "7e440e1f969190f2c7a5f48462ad8adc086d0ed9fb0aea5efa8dcbe7f6956f6c"
+    },
+    "reports/collected/chess-self-timing-retry/models-runs/timing-01/e04-window/run.json": {
+      "bytes": 153733,
+      "sha256": "e5a303cd51d4eb81509b789aa43c23baf04b14136d321a27bd51c419e3d89336"
+    },
+    "reports/collected/chess-self-timing-retry/models-runs/timing-01/e05-squares/best.pt": {
+      "bytes": 464797,
+      "sha256": "e20df02d9567e2da78fce2602978a99ae5d207df2cf8bd628fb9ed46d3394653"
+    },
+    "reports/collected/chess-self-timing-retry/models-runs/timing-01/e05-squares/initial.pt": {
+      "bytes": 465019,
+      "sha256": "bdde8db792acaefbbe47e5b8e1f5d266a78b64a73d57ac2052c13d75490436d8"
+    },
+    "reports/collected/chess-self-timing-retry/models-runs/timing-01/e05-squares/last.pt": {
+      "bytes": 464797,
+      "sha256": "0903c579a56b7ec17de4d8a46698357645d045a738013c430bbc11a77a0e1325"
+    },
+    "reports/collected/chess-self-timing-retry/models-runs/timing-01/e05-squares/run.json": {
+      "bytes": 154107,
+      "sha256": "eebfa5c5d0de2ce70397a223bb8eb3792284d7cf093b0233367f8d448b10da82"
+    },
+    "reports/e05-selected-browser-fixtures.json": {
+      "bytes": 6764289,
+      "sha256": "89080cd1a49fed6660f8475379cdb813621dbd0ea27d480d236621a4e0425b45"
+    },
+    "reports/e05-selected-fixture-native-parity.json": {
+      "bytes": 2858,
+      "sha256": "f6940c1423c725f390a59dc597890068bc4ad02da0a423c3e07e11f83686eb1d"
+    },
+    "reports/summarize_full_timing_evaluation.py": {
+      "bytes": 2282,
+      "sha256": "110b6ef45bf175ade589d510d84eac45bf29fcb3edefa04758fcd054f9158cc9"
+    },
+    "reports/timing-analysis.json": {
+      "bytes": 22822,
+      "sha256": "d91a077f4170e43718c75d86689ee3548dae239f62b50567208a85762c51c5c3"
+    },
+    "reports/timing-analysis.md": {
+      "bytes": 6180,
+      "sha256": "2658cae6b7b31e9ff612901156d9bc33d7fd8cd6dd6a70e9da3d4e3a73c515f8"
+    },
+    "reports/timing-browser-selected/summary.json": {
+      "bytes": 1171,
+      "sha256": "ca6e0ffccf018bca9fa7c11766fb0bc918b64afb090f0eb83f501c0d129862dd"
+    },
+    "reports/timing-browser-selected/wasm-console.json": {
+      "bytes": 126,
+      "sha256": "45e1ae051ca73714ff2e5455df4000d45906ea8a31452880ff6a10db0aaf8c13"
+    },
+    "reports/timing-browser-selected/wasm.json": {
+      "bytes": 32534,
+      "sha256": "ed2cf151da2ccd3a91613277480f09f3bc332b64cb9a0e2424643c5e4a835c49"
+    },
+    "reports/timing-browser-selected/wasm.png": {
+      "bytes": 119603,
+      "sha256": "6f46535d543d527075b628c068d7f691c9166a27f8ed53c18c9c019c12ef75a2"
+    },
+    "reports/timing-browser-selected/webgpu-console.json": {
+      "bytes": 1207,
+      "sha256": "07a25f6a1be0852af5d4a6171b4fcbcc75b60d5770a1e6e4246c3ee6e0f5e8ea"
+    },
+    "reports/timing-browser-selected/webgpu.json": {
+      "bytes": 32511,
+      "sha256": "0e84548934d296dcb90de97b061f20d9aa1d15592f8a1102a324784d5bd67591"
+    },
+    "reports/timing-browser-selected/webgpu.png": {
+      "bytes": 118685,
+      "sha256": "9dbb1d34179253c40121954bd3b99fbcbe8356a67ad9b0359767be7be8790213"
+    },
+    "reports/timing-full-evaluation-v1/RESULTS.md": {
+      "bytes": 4203,
+      "sha256": "c468fd575066ccc766cf87345a4400195eb9bb6437892237d1da678faea35d21"
+    },
+    "reports/timing-full-evaluation-v1/comparison.html": {
+      "bytes": 1717,
+      "sha256": "07fa489fa3d170f5a64a3694059af743d0066108156a76f183addb7d4882bfdf"
+    },
+    "reports/timing-full-evaluation-v1/feasible-1024/e03-position-vs-reference.json": {
+      "bytes": 1458,
+      "sha256": "f9343695bd04907c729f40ab1c5915ddc121aff07e29315223f4dd6661503743"
+    },
+    "reports/timing-full-evaluation-v1/feasible-1024/e03-position.json": {
+      "bytes": 780476,
+      "sha256": "996904435eb61dc47a23404b247bdd612358fcca447c6f480f60f51dc0d7aea5"
+    },
+    "reports/timing-full-evaluation-v1/feasible-1024/e04-window-vs-reference.json": {
+      "bytes": 1455,
+      "sha256": "2f401bf8c1bab96a9360a580cc627e8531a19354421ec75683a872ee62efe91c"
+    },
+    "reports/timing-full-evaluation-v1/feasible-1024/e04-window.json": {
+      "bytes": 780545,
+      "sha256": "211bea107c26ffc1ca13bcc2f4c83657b206277ee7df3c08ec68e0c7514dbfb6"
+    },
+    "reports/timing-full-evaluation-v1/feasible-1024/e05-squares-vs-e04-window.json": {
+      "bytes": 1462,
+      "sha256": "27b459d1e7980244b48a98ec2e67a120c752ed6562f9faaf5fab7f592827f3cd"
+    },
+    "reports/timing-full-evaluation-v1/feasible-1024/e05-squares-vs-reference.json": {
+      "bytes": 1457,
+      "sha256": "85629850e6182b093ec3eba33b063a93d1fa6ad36c94bafcdc7d43592a4c616f"
+    },
+    "reports/timing-full-evaluation-v1/feasible-1024/e05-squares.json": {
+      "bytes": 780998,
+      "sha256": "522ca7f7c74532abf3ab9e46e400482b95c58828297ca1282500d79d7eb7881e"
+    },
+    "reports/timing-full-evaluation-v1/feasible-1024/reference.json": {
+      "bytes": 780244,
+      "sha256": "253b83c595e6b15c7e72bf4c37b7ea7b86eb1795be9f7e6a159c98f1d1437f3d"
+    },
+    "reports/timing-full-evaluation-v1/feasible-256/e03-position-vs-reference.json": {
+      "bytes": 1460,
+      "sha256": "2df3a0bf7bb98553fdf8a2beac3e6f783634ff6237cae99de744d0a146005129"
+    },
+    "reports/timing-full-evaluation-v1/feasible-256/e03-position.json": {
+      "bytes": 780516,
+      "sha256": "f6525256c0f5536d9782b8edfca9e6bd02b1f2481718fde0e461f44d8e1706e5"
+    },
+    "reports/timing-full-evaluation-v1/feasible-256/e04-window-vs-reference.json": {
+      "bytes": 1455,
+      "sha256": "372d203bb97ba2731f8566ebede58e02aa6ba30b565820f8add74cf3fdf71d27"
+    },
+    "reports/timing-full-evaluation-v1/feasible-256/e04-window.json": {
+      "bytes": 780541,
+      "sha256": "bdbce10d9f4562a5bf070f42708ca34bf2d828286359af38baf3536317020308"
+    },
+    "reports/timing-full-evaluation-v1/feasible-256/e05-squares-vs-e04-window.json": {
+      "bytes": 1461,
+      "sha256": "77b592b425e76d16d37513c3108fe8d30f5247190266929f073de62eaf8a617f"
+    },
+    "reports/timing-full-evaluation-v1/feasible-256/e05-squares-vs-reference.json": {
+      "bytes": 1456,
+      "sha256": "bb2561c45451ef68639a0352506a222f00c2471c8409aea32b358af1fecb736a"
+    },
+    "reports/timing-full-evaluation-v1/feasible-256/e05-squares.json": {
+      "bytes": 781012,
+      "sha256": "2a0cc9389940a55266997b3c55c7f0850fe4ba397663a85d7f19da42038ded33"
+    },
+    "reports/timing-full-evaluation-v1/feasible-256/reference.json": {
+      "bytes": 780267,
+      "sha256": "f3c245d0e4bc2dc32a88a0dfbfefa0b565a47d318432aa18c08ae0b9abbcb3ab"
+    },
+    "reports/timing-full-evaluation-v1/provenance.json": {
+      "bytes": 22049,
+      "sha256": "14be525142c3be0d2c28c3f9400c0e79bc8f150cc2b17ed92f8e696719cab55b"
+    },
+    "reports/timing-full-evaluation-v1/raw-1024/e03-position-vs-reference.json": {
+      "bytes": 1458,
+      "sha256": "ce1b7de5f617d820b0d10145cd2be330809cfe5be32e7ea681866d1d485b3cc1"
+    },
+    "reports/timing-full-evaluation-v1/raw-1024/e03-position.json": {
+      "bytes": 780401,
+      "sha256": "31132931ff2ac1d83bb20fca472c57997500de5ebb4a4a350d885f519bcc2c26"
+    },
+    "reports/timing-full-evaluation-v1/raw-1024/e04-window-vs-reference.json": {
+      "bytes": 1456,
+      "sha256": "a23201a8532bd83cd602b867beeb5e3fac0d1a9c8323393c5083a334c50c73a6"
+    },
+    "reports/timing-full-evaluation-v1/raw-1024/e04-window.json": {
+      "bytes": 780500,
+      "sha256": "82d8d395647950825cc4dd9582d2299a09897e59be7737bcb92855734272944f"
+    },
+    "reports/timing-full-evaluation-v1/raw-1024/e05-squares-vs-e04-window.json": {
+      "bytes": 1461,
+      "sha256": "d9f37196063dc97f6ae5000351f69df738bafac3fc0c98a61b735ecaccbadd1a"
+    },
+    "reports/timing-full-evaluation-v1/raw-1024/e05-squares-vs-reference.json": {
+      "bytes": 1457,
+      "sha256": "9afd56c53ccb1104d76efb6f248d61858584e886f5bc7135280ef86a5ed3b3a8"
+    },
+    "reports/timing-full-evaluation-v1/raw-1024/e05-squares.json": {
+      "bytes": 780757,
+      "sha256": "121e9791d318553818397bebc7ef5591e86ead79c9465ce3d63cff0b274165f5"
+    },
+    "reports/timing-full-evaluation-v1/raw-1024/reference.json": {
+      "bytes": 780159,
+      "sha256": "6c83cdce37cec67c41067fb2fec8d49b5e10ece7afe8a6a28f16ba330adae595"
+    },
+    "reports/timing-full-evaluation-v1/raw-256/e03-position-vs-reference.json": {
+      "bytes": 1459,
+      "sha256": "b16481af529babae8e121b24b72c5cbeb8e97276d5b80a38be9c1a06050b448f"
+    },
+    "reports/timing-full-evaluation-v1/raw-256/e03-position.json": {
+      "bytes": 780374,
+      "sha256": "84258f351d798c5c13111b98f6cce16337fd5f0b9a25624cd5fd96a14c6da661"
+    },
+    "reports/timing-full-evaluation-v1/raw-256/e04-window-vs-reference.json": {
+      "bytes": 1455,
+      "sha256": "cb478b684160f48932df999fb61e7255019728dac352832da8930b908397f0d8"
+    },
+    "reports/timing-full-evaluation-v1/raw-256/e04-window.json": {
+      "bytes": 780540,
+      "sha256": "d96a9f29fb3f1ca6626edd9b331026371b87340ec41b6feed34f3b56984c8f55"
+    },
+    "reports/timing-full-evaluation-v1/raw-256/e05-squares-vs-e04-window.json": {
+      "bytes": 1460,
+      "sha256": "32e0c7bbece018c80ab605638b29a7e9aff51f74d11b30b8b59a0eb7c66f0adc"
+    },
+    "reports/timing-full-evaluation-v1/raw-256/e05-squares-vs-reference.json": {
+      "bytes": 1457,
+      "sha256": "269020cb702192c1856143e976e0164b04ffc7cdd532de43e0b3268fce9f1281"
+    },
+    "reports/timing-full-evaluation-v1/raw-256/e05-squares.json": {
+      "bytes": 780722,
+      "sha256": "b5dac815327a2edfff89b5ad95c9ad20b6273d4a60e384aefc5cfcf713cbaf8f"
+    },
+    "reports/timing-full-evaluation-v1/raw-256/reference.json": {
+      "bytes": 780178,
+      "sha256": "ac06a65aa737aa538da3cc7bb8b13f308f2cc563339222df01484a3da5632509"
+    },
+    "reports/timing-full-evaluation-v1/summary.json": {
+      "bytes": 425671,
+      "sha256": "08906abcb9847a88c76317af69146c41fe6125783f1bf8ac2e1d4b342847e0ca"
+    },
+    "reports/timing-retry-remote-sha256.txt": {
+      "bytes": 1308,
+      "sha256": "5ee3bb585afd700be74ac4d18122150309dbc04f685d24199832a9958fcc0756"
+    },
+    "reports/training-summary.json": {
+      "bytes": 1282,
+      "sha256": "12bfdb72eca6cec4d7077c9e1f31c28d9b921f11ffc78252cac7229b7283950a"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; connect-src 'self' blob:; worker-src 'self' blob:; img-src 'self' data:; object-src 'none'; base-uri 'none'">
+  <title>Chess timing · Browser execution check</title>
+  <link rel="stylesheet" href="parity.css">
+</head>
+<body>
+  <main>
+    <h1>Browser execution check</h1>
+    <p>Compare the two ONNX models with saved native outputs, then measure inference latency in this browser. Files stay on this device.</p>
+    <form id="run-form">
+      <fieldset>
+        <legend>Native export files</legend>
+        <label for="feature-model">Feature backbone ONNX</label>
+        <input id="feature-model" type="file" accept=".onnx" required>
+        <label for="side-model">Timing side model ONNX</label>
+        <input id="side-model" type="file" accept=".onnx" required>
+        <label for="fixture">Native fixture JSON</label>
+        <input id="fixture" type="file" accept=".json,application/json" required>
+      </fieldset>
+      <fieldset>
+        <legend>Execution</legend>
+        <label for="provider">Execution provider</label>
+        <select id="provider"><option value="wasm">WebAssembly (CPU)</option><option value="webgpu">WebGPU</option></select>
+        <label for="repetitions">Warm runs per case</label>
+        <input id="repetitions" type="number" min="1" max="20" step="1" value="3" required>
+        <label class="checkbox"><input id="scheduler" type="checkbox" checked> Run local scheduler check if the fixture supplies it</label>
+        <p class="detail">One cold run precedes the warm runs. WASM uses one thread. The scheduler only records a dummy local commit; it never plays a live move.</p>
+      </fieldset>
+      <div class="actions">
+        <button id="run" type="submit">Run checks</button>
+        <button id="cancel" type="button" disabled>Cancel</button>
+        <button id="download" type="button" disabled>Save report</button>
+      </div>
+    </form>
+    <p id="status" role="status" aria-live="polite">Choose the two models and the matching native fixture.</p>
+    <section aria-labelledby="results-title">
+      <h2 id="results-title">Results</h2>
+      <p id="summary">No measurements yet.</p>
+      <div class="table-scroll"><table>
+        <thead><tr><th scope="col">Case</th><th scope="col">Batch</th><th scope="col">Parity</th><th scope="col">Maximum absolute error</th><th scope="col">Cold pipeline</th><th scope="col">Warm median</th></tr></thead>
+        <tbody id="results"></tbody>
+      </table></div>
+      <details><summary>Report details</summary><pre id="report"></pre></details>
+    </section>
+    <p class="detail">A provider request does not prove placement of every operator. Native CPU parity and browser parity are reported separately. Compare WASM and WebGPU in separate runs.</p>
+  </main>
+  <script type="module" src="parity-harness.mjs"></script>
+</body>
+</html>

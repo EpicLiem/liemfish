@@ -1,0 +1,1025 @@
+{
+  "schema_version": 1,
+  "status": "parity_passed",
+  "created_at": "2026-10-27T23:28:04.833Z",
+  "execution_provider_requested": "wasm",
+  "operator_placement_verified": false,
+  "onnxruntime_web_version": "1.31.1",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "secure_context": true,
+  "cross_origin_isolated": false,
+  "wasm_threads": 1,
+  "warm_runs_per_case": 3,
+  "first_run_semantics": "First call per case in one shared session; only the first case is session-cold",
+  "tolerances": {
+    "atol": 0.0002,
+    "rtol": 0.001
+  },
+  "native_config": {
+    "architecture_id": "maia3-timing-side-v1",
+    "head_config": {
+      "side_dim": 50,
+      "pooled_dim": 512,
+      "hidden_dim": 64,
+      "output_family": "absolute",
+      "output_bins": 30,
+      "use_pooled": true,
+      "move_mode": "squares",
+      "history_mode": "none",
+      "history_channels": 4,
+      "history_length": 8
+    },
+    "base_checkpoint_sha256": "8758ea33f911233b28c2c134192a3f127b5c7669e22c08178417e41393c40427",
+    "head_checkpoint_sha256": "e20df02d9567e2da78fce2602978a99ae5d207df2cf8bd628fb9ed46d3394653",
+    "positions_sha256": "83092ac4ea046b18ea570c55d9d7ac01f7979b47eccd42989467dd8595b5322b",
+    "smoke_only": false
+  },
+  "files": {
+    "feature": {
+      "name": "personalized-timing-features.onnx",
+      "bytes": 91339625,
+      "sha256": "8109a8d96e19e2d36de56018b8429b41a99c7c1adae6b8a4a2bdee1454cd6e7a"
+    },
+    "side": {
+      "name": "e05-selected-epoch5.onnx",
+      "bytes": 418125,
+      "sha256": "85b5dc3ab33dfde62ca511ea0c5a4f9e8ca1ece0846fa2bc2a1aaadca56a1921"
+    },
+    "fixture": {
+      "name": "e05-selected-browser-fixtures.json",
+      "bytes": 6764289,
+      "sha256": "89080cd1a49fed6660f8475379cdb813621dbd0ea27d480d236621a4e0425b45"
+    }
+  },
+  "cases": [
+    {
+      "name": "white",
+      "batch_size": 1,
+      "pass": true,
+      "cold": {
+        "name": "white",
+        "batch_size": 1,
+        "pass": true,
+        "outputs": {
+          "move_logits": {
+            "pass": true,
+            "elements": 4352,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.0000457763671875,
+            "max_rel_error": 0.000005401635464475328
+          },
+          "base_logits": {
+            "pass": true,
+            "elements": 30,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.0000476837158203125,
+            "max_rel_error": 0.000004770493272411863
+          },
+          "pooled": {
+            "pass": true,
+            "elements": 512,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.000003248453140258789,
+            "max_rel_error": 0.0030229695354294546
+          },
+          "squares": {
+            "pass": true,
+            "elements": 32768,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.000014781951904296875,
+            "max_rel_error": 0.06831022085259374
+          },
+          "timing_raw": {
+            "pass": true,
+            "elements": 30,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.0000476837158203125,
+            "max_rel_error": 0.000009935887281295654
+          }
+        },
+        "latency_ms": {
+          "feature": 88,
+          "timing": 0.7000000178813934,
+          "output_readback": 0,
+          "pipeline": 88.7000000178814
+        }
+      },
+      "warm": [
+        {
+          "name": "white",
+          "batch_size": 1,
+          "pass": true,
+          "outputs": {
+            "move_logits": {
+              "pass": true,
+              "elements": 4352,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000457763671875,
+              "max_rel_error": 0.000005401635464475328
+            },
+            "base_logits": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000476837158203125,
+              "max_rel_error": 0.000004770493272411863
+            },
+            "pooled": {
+              "pass": true,
+              "elements": 512,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000003248453140258789,
+              "max_rel_error": 0.0030229695354294546
+            },
+            "squares": {
+              "pass": true,
+              "elements": 32768,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000014781951904296875,
+              "max_rel_error": 0.06831022085259374
+            },
+            "timing_raw": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000476837158203125,
+              "max_rel_error": 0.000009935887281295654
+            }
+          },
+          "latency_ms": {
+            "feature": 60.19999998807907,
+            "timing": 0.10000002384185791,
+            "output_readback": 0,
+            "pipeline": 60.30000001192093
+          }
+        },
+        {
+          "name": "white",
+          "batch_size": 1,
+          "pass": true,
+          "outputs": {
+            "move_logits": {
+              "pass": true,
+              "elements": 4352,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000457763671875,
+              "max_rel_error": 0.000005401635464475328
+            },
+            "base_logits": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000476837158203125,
+              "max_rel_error": 0.000004770493272411863
+            },
+            "pooled": {
+              "pass": true,
+              "elements": 512,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000003248453140258789,
+              "max_rel_error": 0.0030229695354294546
+            },
+            "squares": {
+              "pass": true,
+              "elements": 32768,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000014781951904296875,
+              "max_rel_error": 0.06831022085259374
+            },
+            "timing_raw": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000476837158203125,
+              "max_rel_error": 0.000009935887281295654
+            }
+          },
+          "latency_ms": {
+            "feature": 59.80000001192093,
+            "timing": 0.09999999403953552,
+            "output_readback": 0,
+            "pipeline": 59.900000005960464
+          }
+        },
+        {
+          "name": "white",
+          "batch_size": 1,
+          "pass": true,
+          "outputs": {
+            "move_logits": {
+              "pass": true,
+              "elements": 4352,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000457763671875,
+              "max_rel_error": 0.000005401635464475328
+            },
+            "base_logits": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000476837158203125,
+              "max_rel_error": 0.000004770493272411863
+            },
+            "pooled": {
+              "pass": true,
+              "elements": 512,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000003248453140258789,
+              "max_rel_error": 0.0030229695354294546
+            },
+            "squares": {
+              "pass": true,
+              "elements": 32768,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000014781951904296875,
+              "max_rel_error": 0.06831022085259374
+            },
+            "timing_raw": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000476837158203125,
+              "max_rel_error": 0.000009935887281295654
+            }
+          },
+          "latency_ms": {
+            "feature": 59,
+            "timing": 0,
+            "output_readback": 0,
+            "pipeline": 59
+          }
+        }
+      ],
+      "warm_latency": {
+        "samples": 3,
+        "mean_ms": 59.7333333392938,
+        "median_ms": 59.900000005960464,
+        "p90_ms": 60.22000001072884,
+        "min_ms": 59,
+        "max_ms": 60.30000001192093
+      }
+    },
+    {
+      "name": "black",
+      "batch_size": 1,
+      "pass": true,
+      "cold": {
+        "name": "black",
+        "batch_size": 1,
+        "pass": true,
+        "outputs": {
+          "move_logits": {
+            "pass": true,
+            "elements": 4352,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.0000514984130859375,
+            "max_rel_error": 0.000004018085979003778
+          },
+          "base_logits": {
+            "pass": true,
+            "elements": 30,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.00006914138793945312,
+            "max_rel_error": 0.000015203308012484331
+          },
+          "pooled": {
+            "pass": true,
+            "elements": 512,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.000006020069122314453,
+            "max_rel_error": 0.003036647488418866
+          },
+          "squares": {
+            "pass": true,
+            "elements": 32768,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.000029742717742919922,
+            "max_rel_error": 0.8137128072445019
+          },
+          "timing_raw": {
+            "pass": true,
+            "elements": 30,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.00006914138793945312,
+            "max_rel_error": 0.000021196191952714325
+          }
+        },
+        "latency_ms": {
+          "feature": 58.900000005960464,
+          "timing": 0.09999999403953552,
+          "output_readback": 0,
+          "pipeline": 59
+        }
+      },
+      "warm": [
+        {
+          "name": "black",
+          "batch_size": 1,
+          "pass": true,
+          "outputs": {
+            "move_logits": {
+              "pass": true,
+              "elements": 4352,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000514984130859375,
+              "max_rel_error": 0.000004018085979003778
+            },
+            "base_logits": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.00006914138793945312,
+              "max_rel_error": 0.000015203308012484331
+            },
+            "pooled": {
+              "pass": true,
+              "elements": 512,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000006020069122314453,
+              "max_rel_error": 0.003036647488418866
+            },
+            "squares": {
+              "pass": true,
+              "elements": 32768,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000029742717742919922,
+              "max_rel_error": 0.8137128072445019
+            },
+            "timing_raw": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.00006914138793945312,
+              "max_rel_error": 0.000021196191952714325
+            }
+          },
+          "latency_ms": {
+            "feature": 57.599999994039536,
+            "timing": 0.09999999403953552,
+            "output_readback": 0,
+            "pipeline": 57.69999998807907
+          }
+        },
+        {
+          "name": "black",
+          "batch_size": 1,
+          "pass": true,
+          "outputs": {
+            "move_logits": {
+              "pass": true,
+              "elements": 4352,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000514984130859375,
+              "max_rel_error": 0.000004018085979003778
+            },
+            "base_logits": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.00006914138793945312,
+              "max_rel_error": 0.000015203308012484331
+            },
+            "pooled": {
+              "pass": true,
+              "elements": 512,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000006020069122314453,
+              "max_rel_error": 0.003036647488418866
+            },
+            "squares": {
+              "pass": true,
+              "elements": 32768,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000029742717742919922,
+              "max_rel_error": 0.8137128072445019
+            },
+            "timing_raw": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.00006914138793945312,
+              "max_rel_error": 0.000021196191952714325
+            }
+          },
+          "latency_ms": {
+            "feature": 57.69999998807907,
+            "timing": 0.09999999403953552,
+            "output_readback": 0,
+            "pipeline": 57.79999998211861
+          }
+        },
+        {
+          "name": "black",
+          "batch_size": 1,
+          "pass": true,
+          "outputs": {
+            "move_logits": {
+              "pass": true,
+              "elements": 4352,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000514984130859375,
+              "max_rel_error": 0.000004018085979003778
+            },
+            "base_logits": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.00006914138793945312,
+              "max_rel_error": 0.000015203308012484331
+            },
+            "pooled": {
+              "pass": true,
+              "elements": 512,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000006020069122314453,
+              "max_rel_error": 0.003036647488418866
+            },
+            "squares": {
+              "pass": true,
+              "elements": 32768,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000029742717742919922,
+              "max_rel_error": 0.8137128072445019
+            },
+            "timing_raw": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.00006914138793945312,
+              "max_rel_error": 0.000021196191952714325
+            }
+          },
+          "latency_ms": {
+            "feature": 58.30000001192093,
+            "timing": 0.09999999403953552,
+            "output_readback": 0,
+            "pipeline": 58.400000005960464
+          }
+        }
+      ],
+      "warm_latency": {
+        "samples": 3,
+        "mean_ms": 57.96666665871938,
+        "median_ms": 57.79999998211861,
+        "p90_ms": 58.28000000119209,
+        "min_ms": 57.69999998807907,
+        "max_ms": 58.400000005960464
+      }
+    },
+    {
+      "name": "low-clock",
+      "batch_size": 1,
+      "pass": true,
+      "cold": {
+        "name": "low-clock",
+        "batch_size": 1,
+        "pass": true,
+        "outputs": {
+          "move_logits": {
+            "pass": true,
+            "elements": 4352,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.0000514984130859375,
+            "max_rel_error": 0.000006783856764414848
+          },
+          "base_logits": {
+            "pass": true,
+            "elements": 30,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.0000035762786865234375,
+            "max_rel_error": 0.00020293485791061068
+          },
+          "pooled": {
+            "pass": true,
+            "elements": 512,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.000004589557647705078,
+            "max_rel_error": 0.0003178572925544549
+          },
+          "squares": {
+            "pass": true,
+            "elements": 32768,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.000039696693420410156,
+            "max_rel_error": 2.16850413430218
+          },
+          "timing_raw": {
+            "pass": true,
+            "elements": 30,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.00000667572021484375,
+            "max_rel_error": 0.00006261842169188497
+          }
+        },
+        "latency_ms": {
+          "feature": 58.19999998807907,
+          "timing": 0.09999999403953552,
+          "output_readback": 0,
+          "pipeline": 58.29999998211861
+        }
+      },
+      "warm": [
+        {
+          "name": "low-clock",
+          "batch_size": 1,
+          "pass": true,
+          "outputs": {
+            "move_logits": {
+              "pass": true,
+              "elements": 4352,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000514984130859375,
+              "max_rel_error": 0.000006783856764414848
+            },
+            "base_logits": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000035762786865234375,
+              "max_rel_error": 0.00020293485791061068
+            },
+            "pooled": {
+              "pass": true,
+              "elements": 512,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000004589557647705078,
+              "max_rel_error": 0.0003178572925544549
+            },
+            "squares": {
+              "pass": true,
+              "elements": 32768,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000039696693420410156,
+              "max_rel_error": 2.16850413430218
+            },
+            "timing_raw": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.00000667572021484375,
+              "max_rel_error": 0.00006261842169188497
+            }
+          },
+          "latency_ms": {
+            "feature": 57.80000001192093,
+            "timing": 0.09999999403953552,
+            "output_readback": 0,
+            "pipeline": 57.900000005960464
+          }
+        },
+        {
+          "name": "low-clock",
+          "batch_size": 1,
+          "pass": true,
+          "outputs": {
+            "move_logits": {
+              "pass": true,
+              "elements": 4352,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000514984130859375,
+              "max_rel_error": 0.000006783856764414848
+            },
+            "base_logits": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000035762786865234375,
+              "max_rel_error": 0.00020293485791061068
+            },
+            "pooled": {
+              "pass": true,
+              "elements": 512,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000004589557647705078,
+              "max_rel_error": 0.0003178572925544549
+            },
+            "squares": {
+              "pass": true,
+              "elements": 32768,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000039696693420410156,
+              "max_rel_error": 2.16850413430218
+            },
+            "timing_raw": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.00000667572021484375,
+              "max_rel_error": 0.00006261842169188497
+            }
+          },
+          "latency_ms": {
+            "feature": 57.900000005960464,
+            "timing": 0.09999999403953552,
+            "output_readback": 0,
+            "pipeline": 58
+          }
+        },
+        {
+          "name": "low-clock",
+          "batch_size": 1,
+          "pass": true,
+          "outputs": {
+            "move_logits": {
+              "pass": true,
+              "elements": 4352,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000514984130859375,
+              "max_rel_error": 0.000006783856764414848
+            },
+            "base_logits": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000035762786865234375,
+              "max_rel_error": 0.00020293485791061068
+            },
+            "pooled": {
+              "pass": true,
+              "elements": 512,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000004589557647705078,
+              "max_rel_error": 0.0003178572925544549
+            },
+            "squares": {
+              "pass": true,
+              "elements": 32768,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000039696693420410156,
+              "max_rel_error": 2.16850413430218
+            },
+            "timing_raw": {
+              "pass": true,
+              "elements": 30,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.00000667572021484375,
+              "max_rel_error": 0.00006261842169188497
+            }
+          },
+          "latency_ms": {
+            "feature": 57.900000005960464,
+            "timing": 0.09999999403953552,
+            "output_readback": 0,
+            "pipeline": 58
+          }
+        }
+      ],
+      "warm_latency": {
+        "samples": 3,
+        "mean_ms": 57.96666666865349,
+        "median_ms": 58,
+        "p90_ms": 58,
+        "min_ms": 57.900000005960464,
+        "max_ms": 58
+      }
+    },
+    {
+      "name": "batch-two",
+      "batch_size": 2,
+      "pass": true,
+      "cold": {
+        "name": "batch-two",
+        "batch_size": 2,
+        "pass": true,
+        "outputs": {
+          "move_logits": {
+            "pass": true,
+            "elements": 8704,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.0000476837158203125,
+            "max_rel_error": 0.000004899160208568556
+          },
+          "base_logits": {
+            "pass": true,
+            "elements": 60,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.0000209808349609375,
+            "max_rel_error": 0.00000894479756517499
+          },
+          "pooled": {
+            "pass": true,
+            "elements": 1024,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.000007092952728271484,
+            "max_rel_error": 0.1119724375538329
+          },
+          "squares": {
+            "pass": true,
+            "elements": 65536,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.00002765655517578125,
+            "max_rel_error": 0.6647264260768335
+          },
+          "timing_raw": {
+            "pass": true,
+            "elements": 60,
+            "failed_elements": 0,
+            "nonfinite_elements": 0,
+            "max_abs_error": 0.0000209808349609375,
+            "max_rel_error": 0.000024224219374530657
+          }
+        },
+        "latency_ms": {
+          "feature": 112.5,
+          "timing": 0.20000001788139343,
+          "output_readback": 0,
+          "pipeline": 112.7000000178814
+        }
+      },
+      "warm": [
+        {
+          "name": "batch-two",
+          "batch_size": 2,
+          "pass": true,
+          "outputs": {
+            "move_logits": {
+              "pass": true,
+              "elements": 8704,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000476837158203125,
+              "max_rel_error": 0.000004899160208568556
+            },
+            "base_logits": {
+              "pass": true,
+              "elements": 60,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000209808349609375,
+              "max_rel_error": 0.00000894479756517499
+            },
+            "pooled": {
+              "pass": true,
+              "elements": 1024,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000007092952728271484,
+              "max_rel_error": 0.1119724375538329
+            },
+            "squares": {
+              "pass": true,
+              "elements": 65536,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.00002765655517578125,
+              "max_rel_error": 0.6647264260768335
+            },
+            "timing_raw": {
+              "pass": true,
+              "elements": 60,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000209808349609375,
+              "max_rel_error": 0.000024224219374530657
+            }
+          },
+          "latency_ms": {
+            "feature": 113.5,
+            "timing": 0.09999999403953552,
+            "output_readback": 0,
+            "pipeline": 113.59999999403954
+          }
+        },
+        {
+          "name": "batch-two",
+          "batch_size": 2,
+          "pass": true,
+          "outputs": {
+            "move_logits": {
+              "pass": true,
+              "elements": 8704,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000476837158203125,
+              "max_rel_error": 0.000004899160208568556
+            },
+            "base_logits": {
+              "pass": true,
+              "elements": 60,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000209808349609375,
+              "max_rel_error": 0.00000894479756517499
+            },
+            "pooled": {
+              "pass": true,
+              "elements": 1024,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000007092952728271484,
+              "max_rel_error": 0.1119724375538329
+            },
+            "squares": {
+              "pass": true,
+              "elements": 65536,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.00002765655517578125,
+              "max_rel_error": 0.6647264260768335
+            },
+            "timing_raw": {
+              "pass": true,
+              "elements": 60,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000209808349609375,
+              "max_rel_error": 0.000024224219374530657
+            }
+          },
+          "latency_ms": {
+            "feature": 109.30000001192093,
+            "timing": 0.19999998807907104,
+            "output_readback": 0,
+            "pipeline": 109.5
+          }
+        },
+        {
+          "name": "batch-two",
+          "batch_size": 2,
+          "pass": true,
+          "outputs": {
+            "move_logits": {
+              "pass": true,
+              "elements": 8704,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000476837158203125,
+              "max_rel_error": 0.000004899160208568556
+            },
+            "base_logits": {
+              "pass": true,
+              "elements": 60,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000209808349609375,
+              "max_rel_error": 0.00000894479756517499
+            },
+            "pooled": {
+              "pass": true,
+              "elements": 1024,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.000007092952728271484,
+              "max_rel_error": 0.1119724375538329
+            },
+            "squares": {
+              "pass": true,
+              "elements": 65536,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.00002765655517578125,
+              "max_rel_error": 0.6647264260768335
+            },
+            "timing_raw": {
+              "pass": true,
+              "elements": 60,
+              "failed_elements": 0,
+              "nonfinite_elements": 0,
+              "max_abs_error": 0.0000209808349609375,
+              "max_rel_error": 0.000024224219374530657
+            }
+          },
+          "latency_ms": {
+            "feature": 109.10000002384186,
+            "timing": 0.09999999403953552,
+            "output_readback": 0,
+            "pipeline": 109.2000000178814
+          }
+        }
+      ],
+      "warm_latency": {
+        "samples": 3,
+        "mean_ms": 110.7666666706403,
+        "median_ms": 109.5,
+        "p90_ms": 112.77999999523163,
+        "min_ms": 109.2000000178814,
+        "max_ms": 113.59999999403954
+      }
+    }
+  ],
+  "scheduler": {
+    "status": "committed",
+    "dummy_commits": 1,
+    "mode": "local_fixture_only",
+    "selected_move_source": "native_fixture",
+    "inference_includes_output_readback_and_parity_comparison": true,
+    "events": [
+      {
+        "token": 1,
+        "position_key": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "turn_start": 2.5064000000059603,
+        "pre_clock_seconds": 60,
+        "inference_start": 2.5064000000059603,
+        "inference_end": 2.5634000000059602,
+        "move_uci": "e2e4",
+        "target_seconds": 1,
+        "effective_target_seconds": 1,
+        "execution_budget_seconds": 59.999999999999986,
+        "guard_intervened": false,
+        "status": "committed",
+        "commit_time": 3.507699999988079,
+        "observed_at": 3.507699999988079,
+        "visible_delay_seconds": 1.0012999999821188,
+        "charged_seconds": 1.0012999999821188,
+        "latency_floor_seconds": 0.05699999999999994,
+        "target_unattainable": false,
+        "post_clock_seconds": 58.998700000017884
+      }
+    ]
+  },
+  "session_load_ms": 828.4000000059605,
+  "model_interfaces": {
+    "feature_inputs": [
+      "tokens",
+      "self_elos",
+      "oppo_elos"
+    ],
+    "feature_outputs": [
+      "move_logits",
+      "base_logits",
+      "pooled",
+      "squares"
+    ],
+    "side_inputs": [
+      "pooled",
+      "base_logits",
+      "side_features",
+      "squares",
+      "move_indices",
+      "move_attributes"
+    ],
+    "side_outputs": [
+      "timing_raw"
+    ]
+  },
+  "browser_test": {
+    "headless": true,
+    "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "browser_version": "156.0.8078.48",
+    "page": "http://127.0.0.1:49848/"
+  }
+}

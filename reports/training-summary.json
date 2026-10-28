@@ -1,0 +1,35 @@
+{
+  "instance_id": "180baf449f084bc7a5bc26471fce58a9",
+  "checkpoint": "reports/collected/chess-self-gpu/verified/models/runs/heads-01/best.pt",
+  "verified_sha256": {
+    "best.pt": "8758ea33f911233b28c2c134192a3f127b5c7669e22c08178417e41393c40427",
+    "run.json": "32a82d31deb0751d571e9b8325e5d02db11eed849d7d986216f31bb3390bad74"
+  },
+  "selected_epoch": 8,
+  "elapsed_seconds": 589.653943166,
+  "baseline": {
+    "positions": 1844,
+    "move_nll": 1.5662986058964032,
+    "top1": 0.5075921908893709,
+    "top3": 0.794468546637744,
+    "timing_positions": 1770,
+    "timing_mae_seconds": 5.474075489731158,
+    "timing_median_absolute_error_seconds": 3.8170234680175668,
+    "timing_p90_absolute_error_seconds": 11.206701564788784,
+    "empirical_timing_mae_seconds": 6.260056497175139,
+    "outside_timing_range": 1
+  },
+  "personalized": {
+    "positions": 1844,
+    "move_nll": 1.4352639525664244,
+    "top1": 0.53470715835141,
+    "top3": 0.8150759219088937,
+    "timing_positions": 1770,
+    "timing_mae_seconds": 5.1421026629782,
+    "timing_median_absolute_error_seconds": 3.362146091461213,
+    "timing_p90_absolute_error_seconds": 10.982103157043511,
+    "empirical_timing_mae_seconds": 6.260056497175139,
+    "outside_timing_range": 1
+  },
+  "test_evaluated": false
+}

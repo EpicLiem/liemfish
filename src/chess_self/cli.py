@@ -19,6 +19,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description="Prepare and train your personal Maia3 chess model")
     parser.add_argument("--threads", type=int, default=4, help="CPU torch threads")
     commands = parser.add_subparsers(dest="command", required=True)
+    timing = commands.add_parser("timing", help="Versioned timing experiments")
+    timing.add_argument("args", nargs=argparse.REMAINDER)
     fetch = commands.add_parser("fetch")
     fetch.add_argument("platform", choices=["lichess", "chess.com"])
     fetch.add_argument("username")
@@ -60,7 +62,10 @@ def main(argv=None):
     doctor.add_argument("--output", type=Path, default=Path("reports/readiness.json"))
     args = parser.parse_args(argv)
     torch.set_num_threads(args.threads)
-    if args.command == "fetch":
+    if args.command == "timing":
+        from .experiments import main as timing_main
+        timing_main(["--threads", str(args.threads), *args.args])
+    elif args.command == "fetch":
         from .fetch import fetch_games
         emit(fetch_games(args.platform, args.username, args.output))
     elif args.command == "prepare":

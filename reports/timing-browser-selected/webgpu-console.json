@@ -1,0 +1,18 @@
+[
+  {
+    "type": "error",
+    "text": "\u001b[0;93m2026-10-27 19:28:08.917199 [W:onnxruntime:, session_state.cc:1598 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.\u001b[m"
+  },
+  {
+    "type": "error",
+    "text": "\u001b[0;93m2026-10-27 19:28:08.918099 [W:onnxruntime:, session_state.cc:1600 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.\u001b[m"
+  },
+  {
+    "type": "error",
+    "text": "\u001b[0;93m2026-10-27 19:28:09.190499 [W:onnxruntime:, session_state.cc:1598 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.\u001b[m"
+  },
+  {
+    "type": "error",
+    "text": "\u001b[0;93m2026-10-27 19:28:09.190799 [W:onnxruntime:, session_state.cc:1600 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.\u001b[m"
+  }
+]
