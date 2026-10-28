@@ -23,3 +23,5 @@ To validate CI without publishing:
 ```sh
 gh workflow run publish-browser.yml --ref main
 ```
+
+Npm requires a new trusted-publisher configuration to complete its first successful publish within two days. If that window passes before the first tagged release, recreate the connection in npm package settings (or with `npm trust github @epicliem/liemfish-browser --file publish-browser.yml --repo EpicLiem/liemfish --allow-publish --yes`). A manual dry-run does not activate the connection. See https://docs.npmjs.com/trusted-publishers/.
