@@ -91,10 +91,14 @@ def evaluate(model, dataset, device="cpu", batch_size=32, empirical=None):
     return result
 
 
-def select_parameters(model, final_blocks=0):
+def select_parameters(model, final_blocks=0, *, policy_only=False):
     if not 0 <= final_blocks <= len(model.transformer.layers):
         raise ValueError("Invalid final block count")
-    prefixes = ["proj_sq_from.", "proj_sq_to.", "promo_bias_proj.", "fc_ponder.", "fc_ponder_hid.", "last_ln."]
+    if policy_only and final_blocks:
+        raise ValueError("Policy-only training cannot adapt transformer blocks")
+    prefixes = ["proj_sq_from.", "proj_sq_to.", "promo_bias_proj."]
+    if not policy_only:
+        prefixes += ["fc_ponder.", "fc_ponder_hid.", "last_ln."]
     if final_blocks:
         prefixes += [f"transformer.layers.{i}." for i in range(len(model.transformer.layers) - final_blocks, len(model.transformer.layers))]
         prefixes.append("transformer.norm.")
@@ -108,11 +112,13 @@ def select_parameters(model, final_blocks=0):
 
 def train(data: Path, checkpoint: Path, output: Path, *, device="cuda", epochs=8,
           batch_size=16, learning_rate=1e-5, timing_weight=.2, patience=2, final_blocks=0,
-          seed=42, smoke=False):
+          seed=42, smoke=False, policy_only=False):
     if device == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA GPU unavailable. Use --device cpu --smoke for a readiness check only.")
     if epochs < 1 or batch_size < 1 or learning_rate <= 0 or timing_weight < 0 or patience < 1:
         raise ValueError("Invalid training settings")
+    if policy_only and (final_blocks or timing_weight):
+        raise ValueError("Policy-only training requires final_blocks=0 and timing_weight=0")
     if output.exists() and any(output.iterdir()):
         raise ValueError("Run directory is not empty; choose a new --output to preserve previous runs")
     random.seed(seed)
@@ -126,7 +132,7 @@ def train(data: Path, checkpoint: Path, output: Path, *, device="cuda", epochs=8
         validation.rows = validation.rows[:4]
         epochs, batch_size = 1, 2
     model = load_model(checkpoint, device)
-    params = select_parameters(model, final_blocks)
+    params = select_parameters(model, final_blocks, policy_only=policy_only)
     optimizer = torch.optim.AdamW(params, lr=learning_rate, weight_decay=.01)
     empirical = timing_baseline(training.rows)
     print("Evaluating unchanged checkpoint on validation games...", flush=True)
@@ -135,7 +141,8 @@ def train(data: Path, checkpoint: Path, output: Path, *, device="cuda", epochs=8
     baseline_seconds = time.perf_counter() - run_start
     output.mkdir(parents=True, exist_ok=True)
     settings = dict(device=device, epochs=epochs, batch_size=batch_size, learning_rate=learning_rate,
-                    timing_weight=timing_weight, patience=patience, final_blocks=final_blocks, seed=seed, smoke=smoke)
+                    timing_weight=timing_weight, patience=patience, final_blocks=final_blocks, seed=seed, smoke=smoke,
+                    policy_only=policy_only)
     manifest = {"settings": settings, "source_commit": SOURCE_COMMIT, "checkpoint_sha256": file_hash(checkpoint),
                 "data_sha256": {name: file_hash(data / name) for name in ("train.jsonl", "val.jsonl", "test.jsonl")},
                 "trainable_parameters": sum(p.numel() for p in params), "baseline": baseline, "epochs": [],
@@ -164,7 +171,8 @@ def train(data: Path, checkpoint: Path, output: Path, *, device="cuda", epochs=8
     updates, skipped_updates = 0, 0
     for epoch in range(1, epochs + 1):
         epoch_start = time.perf_counter()
-        model.train()
+        # The policy projections are linear; keep the frozen backbone free of dropout noise.
+        model.train(not policy_only)
         losses = []
         for batch_index, raw in enumerate(loader, 1):
             batch = to_device(raw, device)

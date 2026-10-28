@@ -1,0 +1,16 @@
+{
+  "original_head_sha256": "e20df02d9567e2da78fce2602978a99ae5d207df2cf8bd628fb9ed46d3394653",
+  "original_checkpoint_sha256": "8758ea33f911233b28c2c134192a3f127b5c7669e22c08178417e41393c40427",
+  "checkpoint_sha256": "52f9339db166dc07e61fc8c01448ba0b0a83befbf435fd864ac6a510f5422427",
+  "changed_policy_tensors": [
+    "proj_sq_from.weight",
+    "proj_sq_to.weight",
+    "promo_bias_proj.weight"
+  ],
+  "nonpolicy_tensors_exact": true,
+  "timing_weights_unchanged": true,
+  "policy_surprisal_changed": true,
+  "timing_validation_required": true,
+  "output": "models/runs/recent-policy-local/warm/timing-rebound.pt",
+  "output_sha256": "072fc9d483e2ea0f4dfd78cc5b7624f9fa9bb2cde7854ccd9dfbaa09035928eb"
+}

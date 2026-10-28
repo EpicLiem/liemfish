@@ -1,0 +1,124 @@
+{
+  "architecture": "maia3-timing-side-v1",
+  "config": {
+    "side_dim": 50,
+    "pooled_dim": 512,
+    "hidden_dim": 64,
+    "output_family": "absolute",
+    "output_bins": 30,
+    "use_pooled": true,
+    "move_mode": "squares",
+    "history_mode": "none",
+    "history_channels": 4,
+    "history_length": 8
+  },
+  "base_checkpoint_sha256": "52f9339db166dc07e61fc8c01448ba0b0a83befbf435fd864ac6a510f5422427",
+  "feature_names": [
+    "clock/log_base",
+    "clock/log_increment",
+    "clock/log_own_clock",
+    "clock/log_opponent_clock",
+    "clock/own_clock_known",
+    "clock/opponent_clock_known",
+    "clock/own_base_ratio",
+    "clock/opponent_base_ratio",
+    "clock/relative_clock_difference",
+    "clock/increment_clock_ratio",
+    "phase/move_number",
+    "phase/piece_fraction",
+    "phase/nonpawn_material_fraction",
+    "chess/in_check",
+    "chess/log_legal_count",
+    "chess/forced_reply",
+    "chess/capture_available",
+    "chess/previous_move_was_capture",
+    "history_window/own_log_time_0",
+    "history_window/own_known_0",
+    "history_window/own_log_time_1",
+    "history_window/own_known_1",
+    "history_window/own_log_time_2",
+    "history_window/own_known_2",
+    "history_window/own_log_time_3",
+    "history_window/own_known_3",
+    "history_window/own_log_time_4",
+    "history_window/own_known_4",
+    "history_window/own_log_time_5",
+    "history_window/own_known_5",
+    "history_window/own_log_time_6",
+    "history_window/own_known_6",
+    "history_window/own_log_time_7",
+    "history_window/own_known_7",
+    "history_window/opponent_log_time_0",
+    "history_window/opponent_known_0",
+    "history_window/opponent_log_time_1",
+    "history_window/opponent_known_1",
+    "history_window/opponent_log_time_2",
+    "history_window/opponent_known_2",
+    "history_window/opponent_log_time_3",
+    "history_window/opponent_known_3",
+    "history_window/opponent_log_time_4",
+    "history_window/opponent_known_4",
+    "history_window/opponent_log_time_5",
+    "history_window/opponent_known_5",
+    "history_window/opponent_log_time_6",
+    "history_window/opponent_known_6",
+    "history_window/opponent_log_time_7",
+    "history_window/opponent_known_7"
+  ],
+  "format": "onnx",
+  "opset": 18,
+  "inputs": {
+    "pooled": [
+      "batch",
+      512
+    ],
+    "base_logits": [
+      "batch",
+      30
+    ],
+    "side_features": [
+      "batch",
+      50
+    ],
+    "squares": [
+      "batch",
+      64,
+      512
+    ],
+    "move_indices": [
+      "batch",
+      2
+    ],
+    "move_attributes": [
+      "batch",
+      8
+    ]
+  },
+  "output": "timing_raw",
+  "output_semantics": "categorical logits with versioned family edges",
+  "checkpoint_sha256": "072fc9d483e2ea0f4dfd78cc5b7624f9fa9bb2cde7854ccd9dfbaa09035928eb",
+  "onnx_sha256": "85b5dc3ab33dfde62ca511ea0c5a4f9e8ca1ece0846fa2bc2a1aaadca56a1921",
+  "parity": {
+    "provider": "CPUExecutionProvider",
+    "cases": [
+      {
+        "batch": 1,
+        "max_absolute_error": 9.5367431640625e-07,
+        "passed": true
+      },
+      {
+        "batch": 2,
+        "max_absolute_error": 1.9073486328125e-06,
+        "passed": true
+      },
+      {
+        "batch": 5,
+        "max_absolute_error": 1.430511474609375e-06,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "browser_execution_verified": false,
+  "scope": "Timing side head only; requires version-matched Maia representations, causal features, distribution decoder and scheduler."
+}

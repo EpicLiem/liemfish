@@ -2,7 +2,7 @@ import * as ort from 'onnxruntime-web/wasm';
 import { encodePosition, sampleLegalMove, type ModelPosition } from './model-encoding';
 import { timingFeatures, selectedMoveInputs, sampleTiming } from './model-timing';
 
-const MODEL_HASH = '8109a8d96e19e2d36de56018b8429b41a99c7c1adae6b8a4a2bdee1454cd6e7a';
+const MODEL_HASH = 'bc97f3882bf51be3599eca78f178a9066bfc0c19d196321c3bd8c2bc779a168a';
 const TIMING_HASH = '85b5dc3ab33dfde62ca511ea0c5a4f9e8ca1ece0846fa2bc2a1aaadca56a1921';
 let session: ort.InferenceSession | undefined;
 let timingSession: ort.InferenceSession | undefined;

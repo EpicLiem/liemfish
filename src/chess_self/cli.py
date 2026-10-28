@@ -40,6 +40,8 @@ def main(argv=None):
     training.add_argument("--timing-weight", type=float, default=.2)
     training.add_argument("--patience", type=int, default=2)
     training.add_argument("--final-blocks", type=int, default=0)
+    training.add_argument("--policy-only", action="store_true",
+                          help="Train only move projections; requires --timing-weight 0 and --final-blocks 0")
     training.add_argument("--seed", type=int, default=42)
     training.add_argument("--smoke", action="store_true")
     evaluation = commands.add_parser("evaluate")

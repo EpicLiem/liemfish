@@ -8,14 +8,16 @@ Paths are relative to the repository root.
 
 | Artifact | Bytes | Role |
 | --- | ---: | --- |
-| models/export/personalized-timing-features.onnx | 91,339,625 | Personalized heads-01 move policy and backbone representations |
-| models/export/e05-selected-epoch5.onnx | 418,125 | Selected full-data E05 epoch-5 timing correction |
-| models/personalized/heads-01.pt | 108,643,175 | Native personalized backbone checkpoint |
-| reports/collected/chess-self-timing-retry/models-runs/timing-01/e05-squares/best.pt | 464,797 | Native selected timing head |
+| models/export/recent-policy-features.onnx | 91,339,625 | Recent-game epoch-6 move policy and frozen backbone representations |
+| models/export/e05-recent-policy.onnx | 418,125 | E05 epoch-5 timing correction, bound to the recent policy |
+| models/personalized/recent-policy-epoch6.pt | 91,864,375 | Native personalized backbone checkpoint |
+| models/personalized/e05-recent-policy.pt | 465,309 | Native selected timing head |
 
 Browser models total 91,757,750 bytes (91.76 MB), before transfer compression. Use the backbone and timing head together.
 
-Adjacent export JSON files contain hashes, exact inputs and feature order. Backbone ONNX SHA256: `8109a8d96e19e2d36de56018b8429b41a99c7c1adae6b8a4a2bdee1454cd6e7a`. Side ONNX SHA256: `85b5dc3ab33dfde62ca511ea0c5a4f9e8ca1ece0846fa2bc2a1aaadca56a1921`. Underlying backbone checkpoint SHA256: `8758ea33f911233b28c2c134192a3f127b5c7669e22c08178417e41393c40427`.
+Adjacent export JSON files contain hashes, exact inputs and feature order. Backbone ONNX SHA256: `bc97f3882bf51be3599eca78f178a9066bfc0c19d196321c3bd8c2bc779a168a`. Side ONNX SHA256: `85b5dc3ab33dfde62ca511ea0c5a4f9e8ca1ece0846fa2bc2a1aaadca56a1921`. Underlying backbone checkpoint SHA256: `52f9339db166dc07e61fc8c01448ba0b0a83befbf435fd864ac6a510f5422427`.
+
+The move policy adapts on 99 games from 2024–2025, with epoch selection on 39 games from 2026. The original test games remain reserved. Timing weights and backbone representations are unchanged, but the selected move’s policy surprisal can change timing predictions. [Validation and gameplay results](../reports/recent-policy-01/RESULTS.md).
 
 ## Native Python API
 
@@ -25,8 +27,8 @@ Adjacent export JSON files contain hashes, exact inputs and feature order. Backb
 {
   "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
   "history_fens": ["rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"],
-  "elo_self": 491,
-  "elo_oppo": 529,
+  "elo_self": 680,
+  "elo_oppo": 680,
   "initial_seconds": 600,
   "increment_seconds": 0,
   "remaining_seconds": 600,
@@ -54,8 +56,8 @@ import chess, torch
 from chess_self.timing_predict import TimingPredictor
 torch.set_num_threads(1)
 predictor = TimingPredictor(
-    Path('models/personalized/heads-01.pt'),
-    Path('reports/collected/chess-self-timing-retry/models-runs/timing-01/e05-squares/best.pt'),
+    Path('models/personalized/recent-policy-epoch6.pt'),
+    Path('models/personalized/e05-recent-policy.pt'),
     device='cpu', mode='sample', feasible=True, seed=42)
 # row follows the position schema above:
 result = predictor(chess.Board(row['fen']), row)

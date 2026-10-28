@@ -19,6 +19,8 @@ test('packed package imports in ESM and requires in CommonJS without browser glo
     const checks = `
       if (typeof globalThis.Worker !== 'undefined' || typeof globalThis.location !== 'undefined') throw Error('Expected no browser globals');
       if (api.DEFAULT_TIME_CONTROL.id !== '10+0') throw Error('Metadata missing');
+      if (api.ratingContextForControl(600, 0).eloSelf !== 680) throw Error('Rating context missing');
+      if (api.RECENT_PLAYER_RATINGS.rapid.games !== 23) throw Error('Rating provenance missing');
       const model = api.createModel();
       for (const name of ['loadModel', 'predict', 'disposeModel']) if (typeof model[name] !== 'function') throw Error(name);
       model.disposeModel();

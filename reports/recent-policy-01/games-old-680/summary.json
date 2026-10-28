@@ -1,0 +1,181 @@
+{
+  "checkpoint": "models/personalized/heads-01.pt",
+  "checkpoint_sha256": "8758ea33f911233b28c2c134192a3f127b5c7669e22c08178417e41393c40427",
+  "settings": {
+    "checkpoint": "models/personalized/heads-01.pt",
+    "output": "reports/recent-policy-01/games-old-680",
+    "stockfish": "/opt/homebrew/bin/stockfish",
+    "games": 12,
+    "seed": 100,
+    "max_plies": 100,
+    "elo_self": 680,
+    "elo_oppo": 680,
+    "opponent_nodes": 10000,
+    "analysis_nodes": 30000
+  },
+  "engine": {
+    "name": "Stockfish 19",
+    "author": "the Stockfish developers (see AUTHORS file)"
+  },
+  "engine_options": {
+    "Threads": 1,
+    "Hash": 64
+  },
+  "limitations": [
+    "Synthetic 2-second clocks isolate move policy; timing head is not exercised.",
+    "Finite-budget Stockfish centipawn losses are diagnostic, not human blunder labels.",
+    "Same seeds reproduce sampling only with the same checkpoint and software; trajectories diverge across policies."
+  ],
+  "games": [
+    {
+      "game": 1,
+      "seed": 100,
+      "color": "white",
+      "result": "0-1",
+      "termination": "game over",
+      "plies": 50,
+      "ai_moves": 25,
+      "loss_ge_200cp": 3,
+      "loss_ge_500cp": 1,
+      "mean_loss_cp": 411.8
+    },
+    {
+      "game": 2,
+      "seed": 101,
+      "color": "black",
+      "result": "1-0",
+      "termination": "game over",
+      "plies": 73,
+      "ai_moves": 36,
+      "loss_ge_200cp": 4,
+      "loss_ge_500cp": 1,
+      "mean_loss_cp": 300.72222222222223
+    },
+    {
+      "game": 3,
+      "seed": 102,
+      "color": "white",
+      "result": "0-1",
+      "termination": "game over",
+      "plies": 38,
+      "ai_moves": 19,
+      "loss_ge_200cp": 3,
+      "loss_ge_500cp": 1,
+      "mean_loss_cp": 526.4736842105264
+    },
+    {
+      "game": 4,
+      "seed": 103,
+      "color": "black",
+      "result": "1-0",
+      "termination": "game over",
+      "plies": 23,
+      "ai_moves": 11,
+      "loss_ge_200cp": 3,
+      "loss_ge_500cp": 2,
+      "mean_loss_cp": 914.2727272727273
+    },
+    {
+      "game": 5,
+      "seed": 104,
+      "color": "white",
+      "result": "0-1",
+      "termination": "game over",
+      "plies": 42,
+      "ai_moves": 21,
+      "loss_ge_200cp": 6,
+      "loss_ge_500cp": 2,
+      "mean_loss_cp": 505.5238095238095
+    },
+    {
+      "game": 6,
+      "seed": 105,
+      "color": "black",
+      "result": "1-0",
+      "termination": "game over",
+      "plies": 29,
+      "ai_moves": 14,
+      "loss_ge_200cp": 3,
+      "loss_ge_500cp": 2,
+      "mean_loss_cp": 734.3571428571429
+    },
+    {
+      "game": 7,
+      "seed": 106,
+      "color": "white",
+      "result": "0-1",
+      "termination": "game over",
+      "plies": 28,
+      "ai_moves": 14,
+      "loss_ge_200cp": 3,
+      "loss_ge_500cp": 1,
+      "mean_loss_cp": 719.4285714285714
+    },
+    {
+      "game": 8,
+      "seed": 107,
+      "color": "black",
+      "result": "1-0",
+      "termination": "game over",
+      "plies": 49,
+      "ai_moves": 24,
+      "loss_ge_200cp": 4,
+      "loss_ge_500cp": 1,
+      "mean_loss_cp": 426.4166666666667
+    },
+    {
+      "game": 9,
+      "seed": 108,
+      "color": "white",
+      "result": "0-1",
+      "termination": "game over",
+      "plies": 54,
+      "ai_moves": 27,
+      "loss_ge_200cp": 4,
+      "loss_ge_500cp": 1,
+      "mean_loss_cp": 358.9259259259259
+    },
+    {
+      "game": 10,
+      "seed": 109,
+      "color": "black",
+      "result": "1-0",
+      "termination": "game over",
+      "plies": 41,
+      "ai_moves": 20,
+      "loss_ge_200cp": 2,
+      "loss_ge_500cp": 2,
+      "mean_loss_cp": 511.3
+    },
+    {
+      "game": 11,
+      "seed": 110,
+      "color": "white",
+      "result": "0-1",
+      "termination": "game over",
+      "plies": 84,
+      "ai_moves": 42,
+      "loss_ge_200cp": 3,
+      "loss_ge_500cp": 3,
+      "mean_loss_cp": 466.57142857142856
+    },
+    {
+      "game": 12,
+      "seed": 111,
+      "color": "black",
+      "result": "1-0",
+      "termination": "game over",
+      "plies": 17,
+      "ai_moves": 8,
+      "loss_ge_200cp": 3,
+      "loss_ge_500cp": 1,
+      "mean_loss_cp": 1252.375
+    }
+  ],
+  "all": {
+    "ai_moves": 261,
+    "loss_ge_200cp": 41,
+    "loss_ge_500cp": 18,
+    "mean_loss_cp": 505.42528735632186
+  }
+}

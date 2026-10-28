@@ -16,25 +16,25 @@ The timing experiments compare duration predictions under the same move policy. 
 
 ## Measured results
 
-Personalization raised first-choice agreement with Liem's recorded moves from **50.76% to 53.47%** on 1,844 validation positions. Top-three agreement reached 81.51%. These measure imitation of the recorded player, not chess strength. [Move results](reports/training-summary.json)
+The recent-game move policy was adapted on **99 games from 2024–2025** and selected on **39 development games from 2026**. It reduced move prediction loss by **3.24%** relative to the previous personalized policy. First-choice agreement reached **55.19%**, and top-three agreement reached **82.67%**, across 935 positions.
 
-The selected square-conditioned timing head, E05 at epoch 5, reduced mean-time absolute error by **4.85%**, from 5.108 to 4.860 seconds. Its full-distribution score, CRPS, improved by 2.54%; lower CRPS means the predicted timing distribution fits the observed durations better. Evaluation covered 1,770 timed moves across 74 games, with comparisons resampled by whole game. [Timing results and uncertainty](reports/timing-full-evaluation-v1/RESULTS.md)
+In 36 sampled games per model against Stockfish, screened direct material-loss errors fell from **5.98% to 3.73% of AI moves** at the same rating inputs. The model still blunders, and this finite-search diagnostic is not measured Elo or proof of perfect player imitation. All recorded training moves were retained, including mistakes. [Methods, results and limitations](reports/recent-policy-01/RESULTS.md)
 
-These are development results on validation games used for model selection. The 76-game test set remains untouched. Clock-pressure behavior still needs work: the below-ten-second subgroup is small, and its improvement interval crosses zero.
+The E05 timing weights are unchanged. On 896 recent timing labels, mean prediction error remained about **5.32 seconds**, with negligible change in the distribution score. These are development results; the original 76-game test set remains untouched.
 
 ## Browser inference, verified
 
-The selected ONNX pair has run in Chrome through both WebGPU and WebAssembly. Both passed numerical parity checks for white-to-move, black-to-move, low-clock, and batch-two fixtures. WebGPU single-position warm medians were **23.0 to 23.6 ms** on the development Mac; WASM medians were 57.8 to 59.9 ms. These are fixture measurements, not a cross-device benchmark. [Browser reports](reports/timing-browser-selected/summary.json)
+The backbone and timing exports pass native-to-ONNX numerical parity checks. The browser package runs both models in a Web Worker using single-threaded WebAssembly.
 
 The two models total **91.76 MB** before transfer compression:
 
-- [Personalized backbone and move policy](models/export/personalized-timing-features.onnx): 91.34 MB.
-- [Selected E05 timing head](models/export/e05-selected-epoch5.onnx): 0.42 MB.
+- [Personalized backbone and move policy](models/export/recent-policy-features.onnx): 91.34 MB.
+- [Selected E05 timing head](models/export/e05-recent-policy.onnx): 0.42 MB.
 
 Use [@epicliem/liemfish-browser](packages/browser/README.md) to load the models in a Web Worker and predict a legal move with a sampled thinking time. The package provides TypeScript types, load progress, cancellation, and verified asset preparation. Its default runtime is WebAssembly; the separate parity harness also supports WebGPU.
 
 ```sh
-npm install --save-exact @epicliem/liemfish-browser@0.1.1
+npm install --save-exact @epicliem/liemfish-browser@0.2.0
 ```
 
 See the [inference guide](docs/inference.md) for the selected artifacts and native Python API.
@@ -58,7 +58,7 @@ Run the personalized move predictor on the included example position:
 ```sh
 .venv/bin/chess-self predict \
   --position docs/example-position.json \
-  --checkpoint models/personalized/heads-01.pt
+  --checkpoint models/personalized/recent-policy-epoch6.pt
 ```
 
 This CLI returns legal move probabilities and the personalized reference's timing distribution. To sample a move and duration with the selected E05 timing head, use [`TimingPredictor`](src/chess_self/timing_predict.py) with the [native inference example](docs/inference.md#native-python-api). The example ratings and clocks are illustrative inputs, not an estimate of Liem's playing strength.
@@ -74,9 +74,9 @@ The tests cover clock reconstruction, game-level separation, move encoding, trai
 
 ## The games behind the model
 
-The dataset starts with 875 public game exports from **MonisVerse** on Chess.com and **MonisChess** on Lichess. Filtering leaves 748 usable games, split chronologically into 598 training, 74 validation, and 76 reserved test games. Training contains 15,185 player moves and 14,598 usable timing labels. [Preparation audit](data/processed/audit.json)
+The dataset starts with 875 public game exports from **MonisVerse** on Chess.com and **MonisChess** on Lichess. Filtering leaves 748 usable games. The original split contains 598 training, 74 validation, and 76 reserved test games. The recent policy uses a new chronological development split of the original non-test games; its 99 training games contain 2,680 player moves. The original training split contains 15,185 player moves and 14,598 usable timing labels. [Preparation audit](data/processed/audit.json)
 
-Whole games stay in one split. Clock reconstruction accounts for increments and missing observations; missing times remain missing. Post-move clocks and elapsed time are labels, never input features for the current prediction. Training ends in November 2024, so this checkpoint represents historical play.
+Whole games stay in one split. Clock reconstruction accounts for increments and missing observations; missing times remain missing. Post-move clocks and elapsed time are labels, never input features for the current prediction. The recent policy fits games through November 2025; 2026 development games select the checkpoint and supply historical rating context.
 
 [Raw exports](data/raw), [prepared splits](data/processed), and [timing features](data/timing-v2) are included through Git LFS where appropriate. The [artifact manifest](artifacts-manifest.json) records sizes and SHA-256 hashes.
 

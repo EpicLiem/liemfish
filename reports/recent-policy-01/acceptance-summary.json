@@ -1,0 +1,35 @@
+{
+  "old": {
+    "games": 36,
+    "moves": 819,
+    "direct_material_losses": 49,
+    "major_losses": 67
+  },
+  "warm": {
+    "games": 36,
+    "moves": 939,
+    "direct_material_losses": 35,
+    "major_losses": 58
+  },
+  "paired_seed_bootstrap_difference_ci95": [
+    -0.042889744686920556,
+    -0.002855207429870152
+  ],
+  "actual_human_material_error_slice": {
+    "old": {
+      "human_flagged_moves": 14,
+      "move_nll": 2.6466097044093266,
+      "top1": 0.21428571428571427
+    },
+    "warm": {
+      "human_flagged_moves": 14,
+      "move_nll": 2.9794925855738774,
+      "top1": 0.14285714285714285
+    },
+    "reset": {
+      "human_flagged_moves": 14,
+      "move_nll": 3.113302577819143,
+      "top1": 0.14285714285714285
+    }
+  }
+}

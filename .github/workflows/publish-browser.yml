@@ -39,7 +39,7 @@ jobs:
           node --input-type=module -e "import p from './package.json' with { type: 'json' }; if (process.env.RELEASE_TAG !== 'browser-v' + p.version) throw Error('Tag must match package version');"
       - name: Restore selected model fixtures
         working-directory: .
-        run: git lfs pull --include='models/export/personalized-timing-features.onnx,models/export/e05-selected-epoch5.onnx'
+        run: git lfs pull --include='models/export/recent-policy-features.onnx,models/export/e05-recent-policy.onnx'
       - run: npm ci
       - run: npm run build
       - run: npm run typecheck

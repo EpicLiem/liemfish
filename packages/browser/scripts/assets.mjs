@@ -6,17 +6,17 @@ import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-export const MODEL_HASH = '8109a8d96e19e2d36de56018b8429b41a99c7c1adae6b8a4a2bdee1454cd6e7a';
+export const MODEL_HASH = 'bc97f3882bf51be3599eca78f178a9066bfc0c19d196321c3bd8c2bc779a168a';
 export const TIMING_HASH = '85b5dc3ab33dfde62ca511ea0c5a4f9e8ca1ece0846fa2bc2a1aaadca56a1921';
-const CHECKPOINT_HASH = '8758ea33f911233b28c2c134192a3f127b5c7669e22c08178417e41393c40427';
+const CHECKPOINT_HASH = '52f9339db166dc07e61fc8c01448ba0b0a83befbf435fd864ac6a510f5422427';
 const packageVersion = JSON.parse(await readFile(resolve(root, 'package.json'), 'utf8')).version;
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 const modelFiles = {
-  [`personalized-${MODEL_HASH}.onnx`]: 'models/export/personalized-timing-features.onnx',
-  [`timing-${TIMING_HASH}.onnx`]: 'models/export/e05-selected-epoch5.onnx',
-  'personalized-timing-features.json': 'models/export/personalized-timing-features.json',
-  'personalized-timing-features.moves.json': 'models/export/personalized-timing-features.moves.json',
-  'e05-selected-epoch5.json': 'models/export/e05-selected-epoch5.json',
+  [`personalized-${MODEL_HASH}.onnx`]: 'models/export/recent-policy-features.onnx',
+  [`timing-${TIMING_HASH}.onnx`]: 'models/export/e05-recent-policy.onnx',
+  'personalized-timing-features.json': 'models/export/recent-policy-features.json',
+  'personalized-timing-features.moves.json': 'models/export/recent-policy-features.moves.json',
+  'e05-selected-epoch5.json': 'models/export/e05-recent-policy.json',
   'MAIA3-LICENSE': 'LICENSE',
 };
 const packageFiles = {

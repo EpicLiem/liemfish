@@ -1,0 +1,312 @@
+{
+  "architecture": "maia3-timing-features-v1",
+  "side_head_architecture": "maia3-timing-side-v1",
+  "format": "onnx",
+  "precision": "float32",
+  "opset": 18,
+  "source_commit": "95c0985aacb62bcaeedc30c3a9bbddfb43f91dd0",
+  "checkpoint_sha256": "52f9339db166dc07e61fc8c01448ba0b0a83befbf435fd864ac6a510f5422427",
+  "onnx_sha256": "bc97f3882bf51be3599eca78f178a9066bfc0c19d196321c3bd8c2bc779a168a",
+  "output_bytes": 91339625,
+  "inputs": {
+    "tokens": [
+      "batch",
+      64,
+      99
+    ],
+    "self_elos": [
+      "batch"
+    ],
+    "oppo_elos": [
+      "batch"
+    ]
+  },
+  "outputs": {
+    "move_logits": [
+      "batch",
+      4352
+    ],
+    "base_logits": [
+      "batch",
+      30
+    ],
+    "pooled": [
+      "batch",
+      512
+    ],
+    "squares": [
+      "batch",
+      64,
+      512
+    ]
+  },
+  "policy_logits": "Unmasked upstream vocabulary logits; apply the legal mask before move selection or surprisal.",
+  "pooled_semantics": "Original last_ln applied to mean transformer square representation.",
+  "squares_semantics": "Original transformer output in the encoder's current side-to-move square orientation.",
+  "move_vocabulary": "models/export/recent-policy-features.moves.json",
+  "parity": {
+    "provider": "CPUExecutionProvider",
+    "atol": 0.0002,
+    "rtol": 0.0002,
+    "cases": [
+      {
+        "positions": [
+          "white_short"
+        ],
+        "batch_size": 1,
+        "outputs": {
+          "move_logits": {
+            "max_absolute_error": 7.152557373046875e-05,
+            "mean_absolute_error": 9.286929525842424e-06,
+            "passed": true
+          },
+          "base_logits": {
+            "max_absolute_error": 2.5272369384765625e-05,
+            "mean_absolute_error": 1.0689720511436462e-05,
+            "passed": true
+          },
+          "pooled": {
+            "max_absolute_error": 3.039836883544922e-06,
+            "mean_absolute_error": 8.224059229178238e-07,
+            "passed": true
+          },
+          "squares": {
+            "max_absolute_error": 1.9282102584838867e-05,
+            "mean_absolute_error": 1.8477334151612013e-06,
+            "passed": true
+          }
+        }
+      },
+      {
+        "positions": [
+          "black_short_low_clock"
+        ],
+        "batch_size": 1,
+        "outputs": {
+          "move_logits": {
+            "max_absolute_error": 4.9591064453125e-05,
+            "mean_absolute_error": 8.634784535388462e-06,
+            "passed": true
+          },
+          "base_logits": {
+            "max_absolute_error": 9.655952453613281e-06,
+            "mean_absolute_error": 1.3818342949889484e-06,
+            "passed": true
+          },
+          "pooled": {
+            "max_absolute_error": 2.51084566116333e-06,
+            "mean_absolute_error": 5.80327537136327e-07,
+            "passed": true
+          },
+          "squares": {
+            "max_absolute_error": 1.5735626220703125e-05,
+            "mean_absolute_error": 1.1732967095667846e-06,
+            "passed": true
+          }
+        }
+      },
+      {
+        "positions": [
+          "black_full"
+        ],
+        "batch_size": 1,
+        "outputs": {
+          "move_logits": {
+            "max_absolute_error": 0.0001010894775390625,
+            "mean_absolute_error": 1.1224518857488874e-05,
+            "passed": true
+          },
+          "base_logits": {
+            "max_absolute_error": 2.86102294921875e-06,
+            "mean_absolute_error": 9.592622518539429e-07,
+            "passed": true
+          },
+          "pooled": {
+            "max_absolute_error": 3.3974647521972656e-06,
+            "mean_absolute_error": 8.071373827078787e-07,
+            "passed": true
+          },
+          "squares": {
+            "max_absolute_error": 3.059208393096924e-05,
+            "mean_absolute_error": 2.4839032448653597e-06,
+            "passed": true
+          }
+        }
+      },
+      {
+        "positions": [
+          "white_full_low_clock"
+        ],
+        "batch_size": 1,
+        "outputs": {
+          "move_logits": {
+            "max_absolute_error": 8.392333984375e-05,
+            "mean_absolute_error": 1.2353939382592216e-05,
+            "passed": true
+          },
+          "base_logits": {
+            "max_absolute_error": 5.7220458984375e-06,
+            "mean_absolute_error": 1.7801299918573932e-06,
+            "passed": true
+          },
+          "pooled": {
+            "max_absolute_error": 4.395842552185059e-06,
+            "mean_absolute_error": 1.0352796380175278e-06,
+            "passed": true
+          },
+          "squares": {
+            "max_absolute_error": 4.1931867599487305e-05,
+            "mean_absolute_error": 2.5044623725989368e-06,
+            "passed": true
+          }
+        }
+      },
+      {
+        "positions": [
+          "white_promotion"
+        ],
+        "batch_size": 1,
+        "outputs": {
+          "move_logits": {
+            "max_absolute_error": 5.626678466796875e-05,
+            "mean_absolute_error": 1.0263832336931955e-05,
+            "passed": true
+          },
+          "base_logits": {
+            "max_absolute_error": 1.049041748046875e-05,
+            "mean_absolute_error": 3.9696692510915454e-06,
+            "passed": true
+          },
+          "pooled": {
+            "max_absolute_error": 6.0498714447021484e-06,
+            "mean_absolute_error": 1.3928307680544094e-06,
+            "passed": true
+          },
+          "squares": {
+            "max_absolute_error": 2.7894973754882812e-05,
+            "mean_absolute_error": 2.7936378046433674e-06,
+            "passed": true
+          }
+        }
+      },
+      {
+        "positions": [
+          "black_promotion"
+        ],
+        "batch_size": 1,
+        "outputs": {
+          "move_logits": {
+            "max_absolute_error": 5.435943603515625e-05,
+            "mean_absolute_error": 1.0055654456664342e-05,
+            "passed": true
+          },
+          "base_logits": {
+            "max_absolute_error": 2.384185791015625e-06,
+            "mean_absolute_error": 8.309880854540097e-07,
+            "passed": true
+          },
+          "pooled": {
+            "max_absolute_error": 4.019588232040405e-06,
+            "mean_absolute_error": 1.034739284477837e-06,
+            "passed": true
+          },
+          "squares": {
+            "max_absolute_error": 3.063678741455078e-05,
+            "mean_absolute_error": 2.544968083384447e-06,
+            "passed": true
+          }
+        }
+      },
+      {
+        "positions": [
+          "white_short",
+          "black_short_low_clock"
+        ],
+        "batch_size": 2,
+        "outputs": {
+          "move_logits": {
+            "max_absolute_error": 6.866455078125e-05,
+            "mean_absolute_error": 9.346753358840942e-06,
+            "passed": true
+          },
+          "base_logits": {
+            "max_absolute_error": 3.719329833984375e-05,
+            "mean_absolute_error": 9.174768820230383e-06,
+            "passed": true
+          },
+          "pooled": {
+            "max_absolute_error": 6.921589374542236e-06,
+            "mean_absolute_error": 1.2493475196606596e-06,
+            "passed": true
+          },
+          "squares": {
+            "max_absolute_error": 2.695620059967041e-05,
+            "mean_absolute_error": 1.8956193343910854e-06,
+            "passed": true
+          }
+        }
+      },
+      {
+        "positions": [
+          "black_full",
+          "white_full_low_clock"
+        ],
+        "batch_size": 2,
+        "outputs": {
+          "move_logits": {
+            "max_absolute_error": 9.059906005859375e-05,
+            "mean_absolute_error": 1.3033256436756346e-05,
+            "passed": true
+          },
+          "base_logits": {
+            "max_absolute_error": 1.33514404296875e-05,
+            "mean_absolute_error": 2.6666559733712347e-06,
+            "passed": true
+          },
+          "pooled": {
+            "max_absolute_error": 9.994953870773315e-06,
+            "mean_absolute_error": 1.8206513914265088e-06,
+            "passed": true
+          },
+          "squares": {
+            "max_absolute_error": 0.00010326504707336426,
+            "mean_absolute_error": 3.0917410640540766e-06,
+            "passed": true
+          }
+        }
+      },
+      {
+        "positions": [
+          "white_promotion",
+          "black_promotion"
+        ],
+        "batch_size": 2,
+        "outputs": {
+          "move_logits": {
+            "max_absolute_error": 6.008148193359375e-05,
+            "mean_absolute_error": 1.115077975555323e-05,
+            "passed": true
+          },
+          "base_logits": {
+            "max_absolute_error": 1.239776611328125e-05,
+            "mean_absolute_error": 3.887961156578967e-06,
+            "passed": true
+          },
+          "pooled": {
+            "max_absolute_error": 9.835697710514069e-06,
+            "mean_absolute_error": 2.1296161776263034e-06,
+            "passed": true
+          },
+          "squares": {
+            "max_absolute_error": 5.137920379638672e-05,
+            "mean_absolute_error": 3.4454144497431116e-06,
+            "passed": true
+          }
+        }
+      }
+    ],
+    "passed": true
+  },
+  "browser_execution_verified": false,
+  "scope": "Feature-producing backbone; combine with the matching timing side head, causal features, distribution decoder and scheduler."
+}

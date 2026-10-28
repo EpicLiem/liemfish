@@ -3,12 +3,13 @@
 Framework-independent Liemfish move and timing inference. This package contains the client API, prebuilt module worker, pinned ONNX Runtime WASM files, trained time-control metadata, and an asset preparation CLI.
 
 ```ts
-import { createModel, DEFAULT_TIME_CONTROL } from '@epicliem/liemfish-browser';
+import { createModel, DEFAULT_TIME_CONTROL, ratingContextForControl } from '@epicliem/liemfish-browser';
 import type { ModelPosition, ModelProgress, ModelPrediction } from '@epicliem/liemfish-browser';
 
 const model = createModel({ assetBaseUrl: '/chess/engine/' });
 await model.loadModel(progress => console.log(progress));
-const result = await model.predict(position, { signal: abortController.signal });
+const ratings = ratingContextForControl(position.initialSeconds, position.incrementSeconds);
+const result = await model.predict({ ...position, ...ratings }, { signal: abortController.signal });
 // result: { uci: string, targetSeconds: number }
 model.disposeModel();
 ```
@@ -21,16 +22,20 @@ model.disposeModel();
 
 The package exports `TRAINED_TIME_CONTROLS` and `DEFAULT_TIME_CONTROL` (10+0) as metadata.
 
+`ratingContextForControl(base, increment)` supplies optional historical player context: 230 for bullet, 220 for blitz, and 680 for rapid or longer games. Categories use `base + 40 × increment` seconds, with boundaries at 180 and 600 seconds. Both returned ratings use the same player rating; pass a known opponent rating instead when available. The model never overrides ratings supplied in `ModelPosition`.
+
+`RECENT_PLAYER_RATINGS` records the underlying 2026 Chess.com medians and game counts: bullet 232 (1 game), blitz 224 (15), rapid 675 (23). Rounded inputs are historical context, not measured bot Elo; the single bullet game is particularly sparse.
+
 ## Consumer assets
 
-Install the published version with `npm install --save-exact @epicliem/liemfish-browser@0.1.1`, then run:
+Install the published version with `npm install --save-exact @epicliem/liemfish-browser@0.2.0`, then run:
 
 ```sh
 npx liemfish-assets --source /path/to/chess-self --out public/chess/engine
 npx liemfish-assets --verify --out public/chess/engine
 ```
 
-Preparation verifies the exact personalized backbone and E05 epoch-5 timing head before writing. Model reports, move vocabulary, license notices, worker and WASM files are staged beside a deterministic `manifest.json`. Verification needs only the installed package and staged directory. It rejects missing files, changed hashes, incorrect model identity and a worker/runtime that differs from the installed package.
+Preparation verifies the recent-game epoch-6 move policy and the rebound E05 epoch-5 timing head before writing. The policy was adapted on 99 games from 2024–2025 and selected on 39 development games from 2026. E05 timing weights remain unchanged; the head is bound to the new policy after conditional timing validation. Model reports, move vocabulary, license notices, worker and WASM files are staged beside a deterministic `manifest.json`. Verification needs only the installed package and staged directory. It rejects missing files, changed hashes, incorrect model identity and a worker/runtime that differs from the installed package.
 
 ## Development
 
