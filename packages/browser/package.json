@@ -1,0 +1,52 @@
+{
+  "name": "@epicliem/liemfish-browser",
+  "version": "0.1.0",
+  "description": "Personalized Liemfish move and timing inference in a browser worker",
+  "type": "module",
+  "license": "AGPL-3.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "bin": {
+    "liemfish-assets": "scripts/assets.mjs"
+  },
+  "files": [
+    "dist",
+    "scripts/assets.mjs",
+    "notices",
+    "LICENSE",
+    "README.md",
+    "SOURCE-PROVENANCE.json",
+    "src",
+    "scripts/build.mjs",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs && tsc --emitDeclarationOnly",
+    "test": "tsx --test src/*.test.ts scripts/*.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "prepack": "npm run build",
+    "test:browser": "node scripts/smoke-browser.mjs",
+    "test:package": "node --test scripts/consumer.check.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.7",
+    "chess.js": "1.4.0",
+    "esbuild": "0.25.12",
+    "onnxruntime-web": "1.31.1",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EpicLiem/liemfish.git",
+    "directory": "packages/browser"
+  }
+}

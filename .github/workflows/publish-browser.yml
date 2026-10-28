@@ -1,0 +1,54 @@
+name: Publish browser package
+
+on:
+  push:
+    tags: ['browser-v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: browser-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: packages/browser
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: packages/browser/package-lock.json
+      - name: Install npm with trusted publishing support
+        run: npm install --global npm@11.20.0
+      - name: Verify release tag
+        if: github.event_name == 'push'
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          node --input-type=module -e "import p from './package.json' with { type: 'json' }; if (process.env.RELEASE_TAG !== 'browser-v' + p.version) throw Error('Tag must match package version');"
+      - name: Restore selected model fixtures
+        working-directory: .
+        run: git lfs pull --include='models/export/personalized-timing-features.onnx,models/export/e05-selected-epoch5.onnx'
+      - run: npm ci
+      - run: npm run build
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run test:package
+      - name: Pack verified release
+        run: npm pack --ignore-scripts
+      - name: Check publication contents
+        run: npm publish epicliem-liemfish-browser-*.tgz --dry-run --ignore-scripts --access public
+      - name: Publish through npm trusted publisher
+        if: github.event_name == 'push'
+        run: npm publish epicliem-liemfish-browser-*.tgz --ignore-scripts --access public

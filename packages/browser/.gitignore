@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.tgz
+.test-consumer/
+pack-result.json
+
+.test-registry/

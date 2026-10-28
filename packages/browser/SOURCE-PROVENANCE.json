@@ -1,0 +1,16 @@
+{
+  "source": "EpicLiem portfolio-v2/lib/chess (authorized extraction)",
+  "files": {
+    "lib/chess/model-timing.test.ts": "1ae198cbd9231d16358f3bde2443fd07f4002ca85b88b58dbe758657a7282a47",
+    "lib/chess/model-timing-fixtures.json": "6c43ead0d52414c5fb4bd79c912b3b655f86dc2f649579f0e2fd96adfdc7ceb0",
+    "lib/chess/model.test.ts": "a190c29e017a5cc6fe789e37e51e2bb7fbf52ff185c38e858c21c46e886771cb",
+    "lib/chess/model-timing.ts": "7a471e52368783c885b9989c43047b088b1d38b5b5e5920ea4ebb115896ec769",
+    "lib/chess/model.ts": "d74df848c030cc9adebe322ddd2722db5316915383b50cf57f443c0a01b745d6",
+    "lib/chess/model.worker.ts": "8c7c0d5cc77cf836588bec82268c8dcdc78592d2a6e0c8624e5b2caf0507514d",
+    "lib/chess/model-encoding.ts": "cc76827bdc6c48a8a12afdbea2055e7a0a431f8b5c26ceb609c83a27571223bd",
+    "lib/chess/model-encoding.test.ts": "374c582387006e2ed5ec7238760b7637476f08dccad9ea04f2da783a482d3e48",
+    "lib/chess/time-controls.ts": "23b1b6398cc5b8152c657276d721117a247368a7c7432a0597b20554393aec94",
+    "scripts/prepare-chess-assets.mjs": "29a319f34f3f5e7d17782e11d54b36d99b1784499ed8b9b41c0efed2f005ad6c"
+  },
+  "note": "Hashes describe the extracted inputs. The portfolio thread replaced its time-controls module with a package reexport during extraction; this entry records the original metadata copied before that replacement."
+}
