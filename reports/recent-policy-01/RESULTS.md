@@ -45,7 +45,7 @@ Every nonpolicy backbone tensor was verified exactly equal before rebinding the 
 
 The CRPS difference is +0.000106 seconds, with whole-game interval -0.00468 to +0.00442; MAE difference is -0.00284 seconds. These are effectively unchanged conditional timing diagnostics, not a guarantee about the timing of newly generated trajectories.
 
-The backbone export passed native/ONNX CPU parity. The timing ONNX bytes are identical to the previous E05 export; its metadata now binds the new policy checkpoint. Browser integration verification is recorded separately.
+The backbone export passed native/ONNX CPU parity. The timing ONNX bytes are identical to the previous E05 export; its metadata now binds the new policy checkpoint. The packed browser package passed an actual Chrome/WASM worker load and legal move/duration smoke test. [Browser smoke](browser-smoke.json).
 
 ## Artifacts
 

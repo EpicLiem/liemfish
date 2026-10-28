@@ -1,0 +1,19 @@
+{
+  "package": "@epicliem/liemfish-browser@0.2.0",
+  "source": "packed candidate installed in clean local consumer",
+  "runtime": "Chrome headless, onnxruntime-web WASM, one thread",
+  "asset_cli_prepare_verify": "passed",
+  "command": "PLAYWRIGHT_MODULE=<installed playwright module> npm run test:browser",
+  "prediction": {
+    "uci": "e2e4",
+    "targetSeconds": 1.2353493287482809
+  },
+  "phases": [
+    "downloading",
+    "initializing",
+    "ready"
+  ],
+  "policy_onnx_sha256": "bc97f3882bf51be3599eca78f178a9066bfc0c19d196321c3bd8c2bc779a168a",
+  "timing_onnx_sha256": "85b5dc3ab33dfde62ca511ea0c5a4f9e8ca1ece0846fa2bc2a1aaadca56a1921",
+  "scope": "Actual package worker loads and samples a legal move and duration; numerical parity is separately tested in native ONNX Runtime."
+}

@@ -265,12 +265,16 @@
       "sha256": "f6940c1423c725f390a59dc597890068bc4ad02da0a423c3e07e11f83686eb1d"
     },
     "reports/recent-policy-01/RESULTS.md": {
-      "bytes": 6270,
-      "sha256": "9710af82b167514be904403f91aaef3254a89ed5280222993816e86700b1476e"
+      "bytes": 6354,
+      "sha256": "4173cbcddcfb1fda02956153ce514ff942e607d60c8c5144c78022538a529459"
     },
     "reports/recent-policy-01/acceptance-summary.json": {
       "bytes": 745,
       "sha256": "f097a915e3f7d1e0af2f3efa63e72e976314e285e8710f3b05f4e1ddb539ed7f"
+    },
+    "reports/recent-policy-01/browser-smoke.json": {
+      "bytes": 788,
+      "sha256": "d0c3d38586adec9a7c38af8b40405ca42506733c2f4a6ce0b02a1b8f158bfb72"
     },
     "reports/recent-policy-01/comparison.json": {
       "bytes": 839669,
